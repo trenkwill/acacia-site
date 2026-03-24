@@ -1,0 +1,364 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <base href="https://www.france-douglas.com">
+    <title>France Douglas - Espace adhérents</title>
+
+    <meta property="fb:app_id" content="444580752566905" />
+    <meta name="description" content="Adhérez à l'association France Douglas et bénéficiez des outils collectifs et des recherches pilotées par l'association. ">
+    <meta property="og:description" content="Adhérez à l'association France Douglas et bénéficiez des outils collectifs et des recherches pilotées par l'association. " />
+    <meta property="og:title" content="Espace adhérents" />
+    <meta property="og:url" content="https://www.france-douglas.com/espace-adherents.html" />
+
+    <meta property="og:type" content="article" />
+
+    
+    <meta property="og:image" content="https://www.france-douglas.com/assets/components/francedouglas/templates/img/commun/image_share.jpg" />
+    
+
+
+
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+    <link rel="stylesheet" href="assets/components/francedouglas/templates/css/francedouglas.min.css?1771081674">
+</head>
+
+<body id="page-adherents">
+
+<div class="page">
+
+    <header>
+    <div class="zone_wrap">
+        <button id="btn_menu_principal">Menu</button>
+
+        <div id="switch_langue">
+            <a class="btn fr" href="espace-adherents.html?lang=fr" title="Voir le site en français">français</a>
+            <a class="btn en" href="espace-adherents.html?lang=en" title="Switch to english version">English</a>
+        </div>
+
+        <div id="logo_header"><a href="/" title="Accueil">France Douglas - Accueil</a></div>
+        <div id="unioneuropeenne" class="fr">Union Européenne</div>
+    </div>
+</header>
+
+<div id="menu_principal">
+
+    <div class="haut">
+
+
+        <ul id="nav_social">
+             <li class="linkedin"><a href="https://www.linkedin.com/company/france-douglas/" target="_blank" title="Page LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li> <li class="instagram"><a href="https://www.instagram.com/francedouglas/" target="_blank" title="Compte Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> <li class="youtube"><a href="https://www.youtube.com/@FranceDouglas" target="_blank" title="Chaîne YouTube"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+        </ul>
+
+
+        <div id="switch_langue">
+            <a class="btn fr" href="espace-adherents.html?lang=fr" title="Voir le site en français">français</a>
+            <a class="btn en" href="espace-adherents.html?lang=en" title="Switch to english version">English</a>
+        </div>
+    </div>
+
+    <ul id="nav_pages">
+        <li><a href="actualites/" title="Actualités">Actualités</a></li>
+        <li><a href="association.html" title="Association">Association</a></li>
+        <li><a href="nos-entreprises-referencees/" title="Entreprises">Entreprises</a></li>
+        <li><a href="le-douglas/" title="Le Douglas">Le Douglas</a></li>
+        <li><a href="galerie-des-realisations/" title="Réalisations">Réalisations</a></li>
+        <li><a href="mediatheque/" title="Médiathèque">Médiathèque</a></li>
+        <li><a href="espace-presse/" title="Espace presse">Espace presse</a></li>
+        <li><a href="partenaires/" title="Partenaires">Partenaires</a></li>
+        <li><a href="faq.html" title="Foire aux Questions">Foire aux Questions</a></li>
+        <li><a href="contact-et-localisation.html" title="Contact et localisation">Contact et localisation</a></li>
+    </ul>
+
+    <p class="btn_espace_adherents">
+        <a href="espace-adherents.html" title="Espace adhérents">
+        <img src="assets/components/francedouglas/templates/img/commun/picto_espace.png" alt="picto espace adhérents">
+        <span class="texte">Espace adhérents</span>
+        <span class="fleche"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+    </a></p>
+</div>
+
+    <div id="adherents" class="contenu">
+
+        <h1>Espace adhérents</h1>
+
+        <div class="content">
+            <div class="zone_wrap">
+
+
+                <div class="zone_login">
+                    <div class="zone_reset"></div>
+
+                    <div class="loginForm">
+    <div class="loginMessage"></div>
+
+    <div class="loginLogin">
+
+        
+        <form class="loginLoginForm" action="espace-adherents.html" method="post">
+
+
+            <legend class="loginLegend">Pour accéder à votre espace réservé, veuillez remplir les champs :</legend>
+
+            <p class="champ">
+                <label class="loginUsernameLabel" for="username">e-mail :</label>
+                <input class="loginUsername" type="text" name="username" id="username" placeholder="votre email"/>
+            </p>
+
+            <p class="champ">
+                <label class="loginPasswordLabel" for="password">mot de passe :</label>
+                <input class="loginPassword" type="password" name="password" id="password"
+                       placeholder="votre mot de passe"/>
+            </p>
+
+            <button class="btn_oublie" type="button" onclick="$('.zone_oubli').addClass('active');">Mot de passe oublié ?</button>
+
+            <input class="returnUrl" type="hidden" name="returnUrl" value="/assets/components/francedouglas/templates/img/commun/picto_association_2.png"/>
+            <input class="loginLoginValue" type="hidden" name="service" value="login"/>
+            
+
+            <p class="loginLoginButton"><input class="btn_login" type="submit" name="Login" value="Connexion"/></span>
+
+        </form>
+        
+
+    </div>
+</div>
+                    <div class="zone_oubli">
+                        <div class="loginFPErrors"></div>
+<div class="loginFP">
+    <form class="loginFPForm" action="espace-adherents.html" method="post">
+        <fieldset class="loginFPFieldset">
+            <legend class="loginFPLegend">Mot de passe oublié</legend>
+            <label class="loginFPUsernameLabel">Identifiant
+                <input class="loginFPUsername" type="text" name="username" value="" />
+            </label>
+            
+            <p>Oublié votre identifiant ?</p>
+            
+            <label class="loginFPEmailLabel">Adresse email
+                <input class="loginFPEmail" type="text" name="email" value="" />
+            </label>
+            
+            <input class="returnUrl" type="hidden" name="returnUrl" value="/assets/components/francedouglas/templates/img/commun/picto_association_2.png" />
+            
+            <input class="loginFPService" type="hidden" name="login_fp_service" value="forgotpassword" />
+            <span class="loginFPButton"><input type="submit" name="login_fp" value="Réinitialiser le mot de passe" /></span>
+        </fieldset>
+    </form>
+</div>
+                    </div>
+
+                </div>
+                <div class="droite">
+                    <a href="assets/components/francedouglas/images/association/presentation_2026.pdf" title="" target="_blank">
+    <span class="haut">Pourquoi<br>adhérer ?</span>
+    <img src="assets/components/francedouglas/images/association/picto_association_1.png" alt="picto ">
+    <span class="bas">Télécharger</span>
+</a>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <footer>
+
+  <div id="footer_social">
+    <div class="zone_wrap">
+      <a class="a2a_dd partage" href="https://www.addtoany.com/share"
+         title="Partager cette page"><i
+        class="fa fa-share-alt" aria-hidden="true"></i>Partager cette page</a>
+      <!-- AddToAny BEGIN -->
+      <script>var a2a_config = a2a_config || {};
+      a2a_config.onclick = 1;
+      a2a_config.locale = "fr";</script>
+      <script async defer src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
+      <p class="btn_espace_adherents"><a href="espace-adherents.html" title="Espace adhérents">
+        <img src="assets/components/francedouglas/templates/img/commun/picto_espace.png"
+             alt="picto espace adhérents">
+        <span class="texte"> </span>
+        <span class="fleche"></span>
+      </a></p>
+
+      <ul class="social">
+        
+        <li class="linkedin"><a href="https://www.linkedin.com/company/france-douglas/" target="_blank" title="Page LinkedIn"><i class="fa fa-linkedin"
+                                                                                            aria-hidden="true"></i></a>
+        </li>
+        
+        <li class="instagram"><a href="https://www.instagram.com/francedouglas/" target="_blank" title="Compte Instagram"><i class="fa fa-instagram"
+                                                                                            aria-hidden="true"></i></a>
+        </li>
+        
+        <li class="youtube"><a href="https://www.youtube.com/@FranceDouglas" target="_blank" title="Chaîne YouTube"><i class="fa fa-youtube"
+                                                                                            aria-hidden="true"></i></a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  <div id="footer_contact">
+    <div class="zone_wrap">
+
+      <div class="col1">
+        <img src="assets/components/francedouglas/templates/img/commun/logo-footer.png"
+             alt="logo france Douglas" style="width:200px;height:150px;">
+        <p class="adresse">
+          France Douglas<br />
+78, rue Jules Ferry<br />
+33200 Bordeaux
+          <br>Tél : 06 62 81 15 46<br>
+          <a href="mailto:contact@france-douglas.com" title="Contactez-nous">contact@france-douglas.com</a>
+        </p>
+        <a class="bouton bleu" href="contact-et-localisation.html" title="Voir la page contact">Contact et localisation</a>
+      </div>
+      <!-- fon col1 -->
+
+      <div class="col2">
+        <h2>Lettre d'information</h2>
+        <p class="infos">Veuillez remplir les champs ci-dessous<br>
+          (ces informations resteront confidentielles).</p>
+        <form action="outils/webservices.html?a=sendinblue" method="POST">
+          <p>
+            <label for="newsletter_nom">Nom</label>
+            <input type="text" id="newsletter_nom" name="newsletter_nom" value=""
+                   placeholder="Nom" required>
+          </p>
+          <p>
+            <label for="newsletter_prenom">Prénom</label>
+            <input type="text" id="newsletter_prenom"  name="newsletter_prenom" value=""
+                   placeholder="Prénom" required>
+          </p>
+          <p>
+            <label for="newsletter_societe">Société (optionnel)</label>
+            <input type="text" id="newsletter_societe" name="newsletter_societe" value=""
+                   placeholder="Société (optionnel) ">
+          </p>
+          <p>
+            <label for="newsletter_email">E-mail</label>
+            <input type="email" id="newsletter_email" name="newsletter_email" value=""
+                   placeholder="E-mail" required>
+          </p>
+          <button class="btn_submit" type="submit">Envoyer
+          </button>
+        </form>
+      </div>
+      <!-- fon col2 -->
+
+      <div class="col3">
+        <ul class="navigation">
+
+          <li><a href="actualites/" title="Actualités">Actualités</a></li>
+          <li><a href="association.html" title="Association">Association</a></li>
+          <li><a href="nos-entreprises-referencees/" title="Entreprises">Entreprises</a></li>
+          <li><a href="le-douglas/" title="Le Douglas">Le Douglas</a></li>
+          <li><a href="galerie-des-realisations/" title="Réalisations">Réalisations</a></li>
+          <li><a href="mediatheque/" title="Médiathèque">Médiathèque</a></li>
+          <li><a href="espace-presse/" title="Espace presse">Espace presse</a></li>
+          <li><a href="partenaires/" title="Partenaires">Partenaires</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <!-- fin zone_wrap -->
+
+  </div>
+  <!-- fin footer_contact-->
+
+
+  <div id="footer_soutiens">
+    <h2 onclick="window.location='nos-soutiens/'">Nos soutiens</h2>
+    <div class="soutiens">
+      <ul class="zone_wrap">
+        <li class="un_soutien">
+    <img src="assets/components/francedouglas/images/partenaires/soutiens/soutiens-europe.jpg" alt="Europe">
+</li>
+<li class="un_soutien">
+    <img src="assets/components/francedouglas/images/partenaires/soutiens/soutiens-etat.jpg" alt="État">
+</li>
+<li class="un_soutien">
+    <img src="assets/components/francedouglas/images/partenaires/soutiens/soutiens-auvergne-rhone-alpes.jpg" alt="Auvergne-Rhône-Alpes">
+</li>
+<li class="un_soutien">
+    <img src="assets/components/francedouglas/images/partenaires/soutiens/soutiens-bourgogne-franche-comte.jpg" alt="Bourgogne-Franche-Comté">
+</li>
+<li class="un_soutien">
+    <img src="assets/components/francedouglas/images/partenaires/soutiens/soutiens-nouvelle-aquitaine_2.jpg" alt="Nouvelle-Aquitaine">
+</li>
+<li class="un_soutien">
+    <img src="assets/components/francedouglas/images/partenaires/soutiens/occitanie_ok.jpg" alt="Occitanie">
+</li>
+<li class="un_soutien">
+    <img src="assets/components/francedouglas/images/partenaires/soutiens/soutiens-france-bois-forets.jpg" alt="France-Bois-forêts">
+</li>
+      </ul>
+      <div class="soutien_europe ">
+
+        <p>Les actions de France Douglas sont cofinancées par l'Union Européenne. L'Europe s'engage dans le Massif Central avec le fonds européen de développement régional</p></div>
+    </div>
+
+  </div>
+
+  <p id="footer_credits"><a href="credits-mentions-legales.html" title="crédits / mentions légales">crédits / mentions légales</a></p>
+
+</footer>
+
+
+
+</div>
+<!-- fin page ### -->
+    <script src="assets/components/francedouglas/js/francedouglas_main.js"></script>
+    <script src="assets/components/francedouglas/js/owl-carousel/owl.carousel.js"></script>
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111022209-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-111022209-1');
+    </script>
+    </body>
+</html>

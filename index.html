@@ -1,0 +1,115 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Accueil - Filière Robinia Acacia France</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/francedouglas.css">
+    <link rel="stylesheet" href="assets/css/application.css">
+    <link rel="stylesheet" href="assets/css/extra.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body id="page1">
+<div class="page" style="border: #1482a0 solid 1px">
+    <header>
+    <div class="zone_wrap">
+        <button id="btn_menu_principal" onclick="document.getElementById('menu_principal').classList.toggle('open')">Menu</button>
+        <div id="logo_header">
+            <a href="index.html" title="Accueil">
+                <img src="assets/images/logo_acacia.jpg" alt="Logo Filière Robinia Acacia France" style="height: 80px;">
+            </a>
+        </div>
+    </div>
+    </header>
+
+    <div id="menu_principal">
+        <ul id="nav_pages">
+            <li><a href="index.html" class="active">Accueil</a></li>
+            <li><a href="about.html">L'Association</a></li>
+            <li><a href="acacia.html">L'Acacia</a></li>
+            <li><a href="projets.html">Projets Industriels</a></li>
+            <li><a href="products.html">Nos Produits</a></li>
+            <li><a href="architects.html">Architectes</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="contenu">
+      
+<div id="accueil">
+    <div id="zone_diaporama">
+        <div class="galerie">
+            <div class="une_diapo" style="background-image: url('assets/images/robinia-bg.jpg'); display: flex;">
+                <div class="titre">Filière Robinia Acacia France<br>Une ressource d'avenir</div>
+                <a href="about.html" class="bouton" title="En savoir plus">En savoir plus</a>
+                <div class="baseline">Disponibilité, qualités, usages</div>
+            </div>
+        </div>
+    </div>
+
+    <section id="actualites">
+        <h1>Nos Produits</h1>
+        <div class="zone_wrap">
+             <div class="liste actualites">
+                <div class="une_actualite">
+                    <a href="products.html#poteaux">
+                        <img src="assets/images/image2.jpg" alt="Poteaux">
+                        <h2>Poteaux & Piquets</h2>
+                    </a>
+                </div>
+                <div class="une_actualite">
+                    <a href="products.html#lames">
+                         <img src="assets/images/image12.jpg" alt="Lames de terrasse">
+                        <h2>Terrasse & Aménagement Extérieur</h2>
+                    </a>
+                </div>
+                <div class="une_actualite">
+                    <a href="products.html#interieur">
+                         <img src="assets/images/image24.jpg" alt="Parquet">
+                        <h2>Aménagement Intérieur</h2>
+                    </a>
+                </div>
+            </div>
+            <a href="products.html" class="btn_voir_actualites">Produits existant en acacia</a>
+        </div>
+    </section>
+</div>
+
+    </div>
+
+    <footer style="margin-top: 50px;">
+      <div id="footer_contact" style="width: 100%; background-color: #f4f4f4;">
+        <div class="zone_wrap" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; padding: 2px 20px;">
+            <div class="footer-col-logo" style="flex: 0 0 auto;">
+              <img src="assets/images/logo_acacia.jpg" alt="logo filière acacia" style="width:100px;height:auto; display: block;">
+            </div>
+            <div class="footer-col-info" style="flex: 0 0 auto; text-align: center;">
+              <p class="adresse" style="margin: 0; font-size: 0.8rem; line-height: 1.2;">
+                <strong>Filière Robinia Acacia France</strong><br>
+                <a href="mailto:contact@acacia-france.com" style="text-decoration: none; color: inherit;">contact@acacia-france.com</a>
+              </p>
+            </div>
+        </div>
+      </div>
+      <p id="footer_credits" style="font-size: 0.7rem; margin: 0; text-align: center;">
+        <a href="#" style="text-decoration: none; color: inherit;">crédits / mentions légales</a>
+      </p>
+    </footer>
+</div>
+
+<script>
+// Simple menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('btn_menu_principal');
+    var menu = document.getElementById('menu_principal');
+    if (btn && menu) {
+        btn.addEventListener('click', function() {
+            menu.classList.toggle('open');
+        });
+    }
+});
+</script>
+</body>
+</html>

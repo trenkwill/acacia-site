@@ -1,0 +1,117 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>L'Association - Filière Robinia Acacia France</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/francedouglas.css">
+    <link rel="stylesheet" href="assets/css/application.css">
+    <link rel="stylesheet" href="assets/css/extra.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body id="page1">
+<div class="page" style="border: #1482a0 solid 1px">
+    <header>
+    <div class="zone_wrap">
+        <button id="btn_menu_principal" onclick="document.getElementById('menu_principal').classList.toggle('open')">Menu</button>
+        <div id="logo_header">
+            <a href="index.html" title="Accueil">
+                <img src="assets/images/logo_acacia.jpg" alt="Logo Filière Robinia Acacia France" style="height: 80px;">
+            </a>
+        </div>
+    </div>
+    </header>
+
+    <div id="menu_principal">
+        <ul id="nav_pages">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html" class="active">L'Association</a></li>
+            <li><a href="acacia.html">L'Acacia</a></li>
+            <li><a href="projets.html">Projets Industriels</a></li>
+            <li><a href="products.html">Nos Produits</a></li>
+            <li><a href="architects.html">Architectes</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="contenu">
+      
+<h1 class="page-title">L'Association Filière Acacia Français</h1>
+
+<div class="content-section">
+  <p>Créée en 2024, l'association rassemble les acteurs de la filière, de la forêt à la transformation.</p>
+</div>
+
+<div class="content-section">
+  <h2>Notre Mission</h2>
+  <p>Promouvoir le Robinier Faux-Acacia comme une essence d'avenir, locale et durable. Nous œuvrons pour :</p>
+  <ul>
+    <li>Structurer la filière de production et de transformation.</li>
+    <li>Développer les marchés (agriculture, aménagements urbains, particuliers).</li>
+    <li>Garantir la qualité et la provenance des produits.</li>
+    <li>Encourager la plantation et la gestion durable des peuplements.</li>
+  </ul>
+</div>
+
+<div class="content-section">
+  <h2>Nos Valeurs</h2>
+  <div class="product-grid" style="padding-top: 1rem;">
+    <div class="product-card">
+      <div class="product-info">
+        <h3>Durabilité</h3>
+        <p>Valoriser une essence naturellement résistante (Classe 4) sans chimie.</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-info">
+        <h3>Proximité</h3>
+        <p>Favoriser les circuits courts et l'économie locale.</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-info">
+        <h3>Innovation</h3>
+        <p>Développer de nouveaux produits techniques (aboutage, lamellé-collé).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <footer style="margin-top: 50px;">
+      <div id="footer_contact" style="width: 100%; background-color: #f4f4f4;">
+        <div class="zone_wrap" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; padding: 2px 20px;">
+            <div class="footer-col-logo" style="flex: 0 0 auto;">
+              <img src="assets/images/logo_acacia.jpg" alt="logo filière acacia" style="width:100px;height:auto; display: block;">
+            </div>
+            <div class="footer-col-info" style="flex: 0 0 auto; text-align: center;">
+              <p class="adresse" style="margin: 0; font-size: 0.8rem; line-height: 1.2;">
+                <strong>Filière Robinia Acacia France</strong><br>
+                <a href="mailto:contact@acacia-france.com" style="text-decoration: none; color: inherit;">contact@acacia-france.com</a>
+              </p>
+            </div>
+        </div>
+      </div>
+      <p id="footer_credits" style="font-size: 0.7rem; margin: 0; text-align: center;">
+        <a href="#" style="text-decoration: none; color: inherit;">crédits / mentions légales</a>
+      </p>
+    </footer>
+</div>
+
+<script>
+// Simple menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('btn_menu_principal');
+    var menu = document.getElementById('menu_principal');
+    if (btn && menu) {
+        btn.addEventListener('click', function() {
+            menu.classList.toggle('open');
+        });
+    }
+});
+</script>
+</body>
+</html>

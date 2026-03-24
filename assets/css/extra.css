@@ -1,0 +1,148 @@
+/* Extra styles for static site */
+
+/* Menu toggle */
+#menu_principal {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+#menu_principal.open {
+    max-height: 500px;
+}
+
+/* Active nav link */
+#nav_pages .active a,
+#nav_pages a.active {
+    font-weight: bold;
+    color: var(--primary-color, #2F5233);
+}
+
+/* Page header */
+.page-header {
+    background-color: var(--primary-color, #2F5233);
+    color: #fff;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+}
+.page-header h1 {
+    color: #fff !important;
+    margin: 0;
+}
+.page-header .lead {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+/* Highlight box */
+.highlight-box {
+    background: #f0f7f0;
+    border-left: 4px solid var(--primary-color, #2F5233);
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+}
+
+/* CTA box */
+.cta-box {
+    background: var(--primary-color, #2F5233);
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+.cta-box h3 {
+    color: #fff !important;
+    margin-top: 0;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+.btn-primary {
+    background: #fff;
+    color: var(--primary-color, #2F5233);
+}
+.btn-primary:hover {
+    background: #e8e8e8;
+}
+
+/* Contact layout */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+@media (max-width: 768px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Form styles */
+.contact-form .form-group {
+    margin-bottom: 1rem;
+}
+.contact-form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+}
+.contact-form textarea {
+    resize: vertical;
+}
+.form-note {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 1rem;
+}
+
+/* Contact cards */
+.contact-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+.contact-card h3 {
+    color: var(--primary-color, #2F5233) !important;
+    margin-top: 0;
+}
+.contact-item {
+    margin-bottom: 0.75rem;
+}
+.note {
+    font-style: italic;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Premium product box */
+.premium-product {
+    background: #fdf6ec;
+    border-left: 4px solid #c8a04a;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+}
