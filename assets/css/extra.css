@@ -1,7 +1,13 @@
 /* Extra styles for static site */
 
-/* Menu toggle */
+/* Menu toggle - override francedouglas.css fixed positioning */
 #menu_principal {
+    position: relative;
+    transform: none;
+    top: auto;
+    left: auto;
+    width: 100%;
+    box-shadow: none;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
