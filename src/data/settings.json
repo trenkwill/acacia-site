@@ -1,0 +1,30 @@
+{
+  "site_title": "Filière Robinia Acacia France",
+  "tagline": "Une ressource d'avenir : disponibilité, qualités, usages",
+  "logo": "/images/logo_acacia.jpg",
+  "nav_items": [
+    { "label": "Accueil", "url": "/" },
+    { "label": "L'Association", "url": "/about" },
+    { "label": "L'Acacia", "url": "/acacia" },
+    { "label": "Projets Industriels", "url": "/projets" },
+    { "label": "Nos Produits", "url": "/products" },
+    { "label": "Architectes", "url": "/architects" },
+    { "label": "Contact", "url": "/contact" }
+  ],
+  "footer_email": "contact@acacia-france.com",
+  "footer_credits": "crédits / mentions légales",
+  "contact_main": {
+    "label": "Filière de l'Acacia Français",
+    "person": "C. Toulemonde",
+    "phone": "06 80 13 15 98",
+    "phone_link": "tel:+33680131598",
+    "email": "acacia+francais@dx10.eu"
+  },
+  "contact_technical": {
+    "label": "Contact technique FCBA",
+    "person": "Jean-Denis LANVIN",
+    "email": "Jean-Denis.LANVIN@fcba.fr",
+    "note": "Pour toute question technique sur le bois d'acacia"
+  },
+  "mission_text": "Nous mettons en relation les exploitants forestiers, les scieurs et les professionnels intéressés par l'acacia français."
+}

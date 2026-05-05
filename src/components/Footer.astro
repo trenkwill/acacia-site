@@ -1,0 +1,42 @@
+---
+import settings from "../data/settings.json";
+---
+
+<footer style="margin-top: 50px;">
+  <div id="footer_contact" style="width: 100%; background-color: #f4f4f4;">
+    <div
+      class="zone_wrap"
+      style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; padding: 2px 20px;"
+    >
+      <div class="footer-col-logo" style="flex: 0 0 auto;">
+        <img
+          src={settings.logo}
+          alt="logo filière acacia"
+          style="width:100px;height:auto; display: block;"
+        />
+      </div>
+      <div class="footer-col-info" style="flex: 0 0 auto; text-align: center;">
+        <p
+          class="adresse"
+          style="margin: 0; font-size: 0.8rem; line-height: 1.2;"
+        >
+          <strong>{settings.site_title}</strong><br />
+          <a
+            href={`mailto:${settings.footer_email}`}
+            style="text-decoration: none; color: inherit;"
+          >
+            {settings.footer_email}
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <p
+    id="footer_credits"
+    style="font-size: 0.7rem; margin: 0; text-align: center;"
+  >
+    <a href="#" style="text-decoration: none; color: inherit;">
+      {settings.footer_credits}
+    </a>
+  </p>
+</footer>

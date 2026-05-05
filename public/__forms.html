@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Forms detection</title>
+</head>
+<body>
+<!-- Sentinelle Netlify Forms : ce HTML statique permet à Netlify de détecter
+     le formulaire de contact même quand le rendu réel est servi par Astro. -->
+<form name="contact" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="tel" name="phone" />
+  <select name="subject">
+    <option value="info">Demande d'information</option>
+    <option value="sourcing">Approvisionnement en acacia</option>
+    <option value="technical">Question technique</option>
+    <option value="partnership">Partenariat</option>
+    <option value="other">Autre</option>
+  </select>
+  <textarea name="message"></textarea>
+  <input type="text" name="bot-field" />
+</form>
+</body>
+</html>

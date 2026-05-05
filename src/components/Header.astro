@@ -1,0 +1,18 @@
+---
+import settings from "../data/settings.json";
+---
+
+<header>
+  <div class="zone_wrap">
+    <button id="btn_menu_principal">Menu</button>
+    <div id="logo_header">
+      <a href="/" title="Accueil">
+        <img
+          src={settings.logo}
+          alt={`Logo ${settings.site_title}`}
+          style="height: 80px;"
+        />
+      </a>
+    </div>
+  </div>
+</header>

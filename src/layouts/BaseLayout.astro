@@ -1,0 +1,68 @@
+---
+import "../styles/francedouglas.css";
+import "../styles/application.css";
+import "../styles/extra.css";
+
+import Header from "../components/Header.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import settings from "../data/settings.json";
+
+interface Props {
+  title?: string;
+  description?: string;
+  bodyId?: string;
+}
+
+const {
+  title = settings.site_title,
+  description = settings.tagline,
+  bodyId = "page1",
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const fullTitle = title === settings.site_title
+  ? title
+  : `${title} - ${settings.site_title}`;
+---
+
+<!doctype html>
+<html class="no-js" lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="icon" type="image/jpeg" href="/images/logo_acacia.jpg" />
+  </head>
+
+  <body id={bodyId}>
+    <div class="page" style="border: #1482a0 solid 1px">
+      <Header />
+      <Nav currentPath={currentPath} />
+
+      <div class="contenu">
+        <slot />
+      </div>
+
+      <Footer />
+    </div>
+
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", function () {
+        var btn = document.getElementById("btn_menu_principal");
+        var menu = document.getElementById("menu_principal");
+        if (btn && menu) {
+          btn.addEventListener("click", function () {
+            menu.classList.toggle("open");
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

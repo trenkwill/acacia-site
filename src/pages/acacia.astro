@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getEntry, render } from "astro:content";
+
+const page = await getEntry("pages", "acacia");
+if (!page) throw new Error("Page acacia introuvable");
+const { Content } = await render(page);
+---
+
+<BaseLayout title={page.data.title} description={page.data.seo_description}>
+  <h1 class="page-title">{page.data.hero_title ?? page.data.title}</h1>
+
+  <div class="content-section markdown-content">
+    <Content />
+  </div>
+</BaseLayout>

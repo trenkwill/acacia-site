@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+import ProductCard from "../components/ProductCard.astro";
+
+const products = (await getCollection("products", ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const rendered = await Promise.all(
+  products.map(async (entry) => ({
+    entry,
+    Content: (await render(entry)).Content,
+  }))
+);
+---
+
+<BaseLayout
+  title="Nos Produits"
+  description="Découvrez tous les produits en acacia : poteaux, piquets, lames, parquet, mobilier extérieur."
+>
+  <h1 class="page-title">Nos Produits en Acacia</h1>
+
+  <div class="content-section narrow-container">
+    <div class="product-grid">
+      {
+        rendered.map(({ entry, Content }) => (
+          <ProductCard
+            title={entry.data.title}
+            image={entry.data.image}
+            imageStyle={entry.data.image_style}
+            alt="Produit Acacia"
+          >
+            <Content />
+          </ProductCard>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>

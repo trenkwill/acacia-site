@@ -1,0 +1,31 @@
+---
+import settings from "../data/settings.json";
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+function isActive(itemUrl: string, current: string): boolean {
+  if (itemUrl === "/") return current === "/" || current === "";
+  return current.startsWith(itemUrl);
+}
+---
+
+<div id="menu_principal">
+  <ul id="nav_pages">
+    {
+      settings.nav_items.map((item) => (
+        <li>
+          <a
+            href={item.url}
+            class={isActive(item.url, currentPath) ? "active" : ""}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
