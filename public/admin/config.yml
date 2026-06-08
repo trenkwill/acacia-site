@@ -1,13 +1,10 @@
 # Sveltia CMS — compatible Decap CMS
-# Auth GitHub OAuth direct (sans Netlify Identity).
-# Pour activer : déployer le Worker Cloudflare Sveltia CMS Auth et renseigner base_url.
+# Auth GitHub via le provider OAuth intégré de Netlify (Site config → Access → OAuth).
 
 backend:
   name: github
   repo: trenkwill/acacia-site
   branch: main
-  base_url: https://sveltia-auth.example.workers.dev
-  auth_endpoint: auth
 
 publish_mode: simple
 locale: fr
@@ -15,8 +12,8 @@ locale: fr
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
-site_url: https://acacia-france.netlify.app
-display_url: https://acacia-france.netlify.app
+site_url: https://acaciafrance.netlify.app
+display_url: https://acaciafrance.netlify.app
 logo_url: /images/logo_acacia.jpg
 
 # Widgets réutilisables (Decap/Sveltia : !include n'existe pas → on duplique)
