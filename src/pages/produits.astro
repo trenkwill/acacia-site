@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getEntry, getCollection } from "astro:content";
+import PageHero from "../components/sections/PageHero.astro";
+import CtaBand from "../components/sections/CtaBand.astro";
+
+const page = await getEntry("pages", "produits");
+if (!page) throw new Error("Missing pages/produits.md");
+const d = page.data;
+
+type Family = "poteaux" | "lames" | "amenagement" | "interieur";
+
+const familyLabels: Record<Family, { num: string; label: string }> = {
+  poteaux: { num: "Famille 01", label: "Poteaux & Piquets" },
+  lames: { num: "Famille 02", label: "Terrasse & Extérieur" },
+  amenagement: { num: "Famille 03", label: "Mobilier & Aménagement" },
+  interieur: { num: "Famille 04", label: "Aménagement Intérieur" },
+};
+
+const familyOrder: Family[] = ["poteaux", "lames", "amenagement", "interieur"];
+
+const allProducts = (await getCollection("products", ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const grouped = familyOrder.map((fam) => ({
+  id: fam,
+  ...familyLabels[fam],
+  items: allProducts
+    .filter((p) => p.data.family === fam)
+    .sort((a, b) => a.data.order - b.data.order),
+}));
+---
+
+<BaseLayout
+  title={d.title}
+  description={d.seo_description}
+  screenLabel={d.screen_label}
+>
+  {d.page_hero && <PageHero {...d.page_hero} />}
+
+  <!-- CATEGORY NAV -->
+  <nav class="cat-nav" aria-label="Catégories de produits">
+    <div class="wrap cat-nav__inner">
+      <a href="#poteaux" class="cat-nav__link">Poteaux &amp; Piquets</a>
+      <a href="#lames" class="cat-nav__link">Terrasse &amp; Extérieur</a>
+      <a href="#amenagement" class="cat-nav__link">Mobilier &amp; Aménagement</a>
+      <a href="#interieur" class="cat-nav__link">Aménagement Intérieur</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    {
+      grouped.map((fam) => (
+        <section class="prod-group" id={fam.id}>
+          <div class="prod-group__head">
+            <div>
+              <p class="eyebrow">{fam.num}</p>
+              <h2 class="h2" style="margin-top:10px;">
+                {fam.label}
+              </h2>
+            </div>
+            <div class="prod-group__count">
+              {String(fam.items.length).padStart(2, "0")}
+            </div>
+          </div>
+          <div class="prod-grid">
+            {fam.items.map((entry) => {
+              const p = entry.data;
+              return (
+                <article class="prod-card">
+                  <div class="prod-card__media">
+                    <span class="prod-card__cat">{p.cat_label}</span>
+                    <img
+                      src={p.image}
+                      alt={p.image_alt ?? p.title}
+                      class:list={[{ contain: p.contain }]}
+                    />
+                  </div>
+                  <div class="prod-card__body">
+                    <h3 class="prod-card__title">{p.title}</h3>
+                    {p.description && (
+                      <p class="prod-card__desc">{p.description}</p>
+                    )}
+                    {p.rows && p.rows.length > 0 && (
+                      <dl class="prod-card__meta">
+                        {p.rows.map((r) => (
+                          <div class="prod-card__row">
+                            <dt>{r.dt}</dt>
+                            <dd>
+                              {r.price ? (
+                                <span class="prod-card__price">{r.dd}</span>
+                              ) : (
+                                r.dd
+                              )}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+
+  {
+    d.cta_band && (
+      <CtaBand {...d.cta_band} marginTop="clamp(64px,9vw,120px)" />
+    )
+  }
+</BaseLayout>

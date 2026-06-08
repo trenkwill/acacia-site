@@ -1,12 +1,14 @@
 ---
-title: "Ganivelle en acacia"
+title: Ganivelle en acacia
 image: /images/ganivelle_acacia.png
-category: amenagement
-order: 8
+image_alt: Ganivelle en acacia
+family: amenagement
+cat_label: Clôture
+order: 1
+description: Définie par la hauteur et l'espacement des échalas — sciés, écorcés…
+rows:
+  - dt: Origine
+    dd: Hongrie
+  - dt: Fournisseurs
+    dd: "1"
 ---
-
-Se définit par la hauteur et l'espacement entre les échalas. Les Hongrois proposent des types d'échalas différents – sciés, écorcés…
-
-Fournisseurs : 1
-
-Origine Hongrie

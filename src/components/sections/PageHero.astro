@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+  lead?: string;
+  breadcrumb_label?: string;
+  image: string;
+  image_alt?: string;
+  short?: boolean;
+}
+
+const { title, lead, breadcrumb_label, image, image_alt, short = false } =
+  Astro.props;
+---
+
+<section class:list={["page-hero", { "page-hero--short": short }]}>
+  <div class="page-hero__bg">
+    <img src={image} alt={image_alt ?? ""} />
+  </div>
+  <div class="wrap page-hero__inner">
+    {
+      breadcrumb_label && (
+        <nav class="breadcrumb">
+          <a href="/">Accueil</a>
+          <span>/</span>
+          <span>{breadcrumb_label}</span>
+        </nav>
+      )
+    }
+    <h1 class="page-hero__title h-display" set:html={title} />
+    {lead && <p class="page-hero__lead">{lead}</p>}
+  </div>
+</section>

@@ -1,0 +1,68 @@
+---
+interface Card {
+  idx?: string;
+  title: string;
+  image: string;
+  image_alt?: string;
+  url: string;
+}
+
+interface Props {
+  scheme?: "paper" | "sand";
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  cards: Card[];
+  more_label?: string;
+  more_url?: string;
+}
+
+const {
+  scheme = "sand",
+  eyebrow,
+  title,
+  lead,
+  cards,
+  more_label,
+  more_url,
+} = Astro.props;
+---
+
+<section class:list={["section", { "scheme-sand": scheme === "sand" }]}>
+  <div class="wrap">
+    <div class="section-head reveal">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h2 class="h2">{title}</h2>
+      {lead && <p class="lead">{lead}</p>}
+    </div>
+    <div class="cat-grid reveal" style="margin-top:48px;">
+      {
+        cards.map((c) => (
+          <a href={c.url} class="cat-card">
+            <img src={c.image} alt={c.image_alt ?? c.title} />
+            <div class="cat-card__body">
+              {c.idx && <div class="cat-card__idx serif-num">{c.idx}</div>}
+              <div class="cat-card__title">{c.title}</div>
+              <span class="cat-card__more">
+                Voir la gamme <span class="arrow">→</span>
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+    {
+      more_label && more_url && (
+        <div style="margin-top:36px;" class="reveal">
+          <a
+            href={more_url}
+            class="btn btn--ghost"
+            style="border-color:var(--ink);"
+          >
+            {more_label} <span class="arrow">→</span>
+          </a>
+        </div>
+      )
+    }
+  </div>
+</section>

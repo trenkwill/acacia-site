@@ -1,14 +1,16 @@
 ---
-title: "Acacia étuvé"
+title: Acacia étuvé
 image: /images/image25.jpg
-category: interieur
-order: 18
+image_alt: Acacia étuvé
+family: interieur
+cat_label: Premium
+order: 1
+description: Parquet massif et lames de 4 mm pour parquet collé. Divers degrés d'étuvage (couleur). Pour parquet et lambris.
+rows:
+  - dt: Usage
+    dd: Intérieur · parquet, lambris
+  - dt: Origine
+    dd: Hongrie, Autriche, Italie
+  - dt: Fournisseurs
+    dd: "2"
 ---
-
-Formes : Parquet massif. Lames de 4 mm pour parquet collé. Divers degrés d'étuvage (couleur) possibles.
-
-Produit pour l'intérieur : parquet, lambris.
-
-Fournisseurs : 2
-
-Origine : Hongrie, Autriche, Italie

@@ -1,0 +1,34 @@
+---
+interface Props {
+  scheme?: "paper" | "sand";
+  eyebrow?: string;
+  title: string;
+  body?: string;
+  items: string[];
+}
+
+const { scheme = "sand", eyebrow, title, body, items } = Astro.props;
+---
+
+<section class:list={["section", { "scheme-sand": scheme === "sand" }]}>
+  <div class="wrap">
+    <div class="split split--narrow-text reveal">
+      <div>
+        {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+        <h2 class="h2" style="margin-top:14px;" set:html={title} />
+        {
+          body && (
+            <p style="margin-top:22px; color:var(--ink-soft);">
+              {body}
+            </p>
+          )
+        }
+      </div>
+      <div class="prose" style="max-width:none;">
+        <ul>
+          {items.map((it) => <li>{it}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

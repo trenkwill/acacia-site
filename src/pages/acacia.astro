@@ -1,16 +1,21 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getEntry, render } from "astro:content";
+import { getEntry } from "astro:content";
+import PageHero from "../components/sections/PageHero.astro";
+import EditorialBlocks from "../components/sections/EditorialBlocks.astro";
+import CtaBand from "../components/sections/CtaBand.astro";
 
 const page = await getEntry("pages", "acacia");
-if (!page) throw new Error("Page acacia introuvable");
-const { Content } = await render(page);
+if (!page) throw new Error("Missing pages/acacia.md");
+const d = page.data;
 ---
 
-<BaseLayout title={page.data.title} description={page.data.seo_description}>
-  <h1 class="page-title">{page.data.hero_title ?? page.data.title}</h1>
-
-  <div class="content-section markdown-content">
-    <Content />
-  </div>
+<BaseLayout
+  title={d.title}
+  description={d.seo_description}
+  screenLabel={d.screen_label}
+>
+  {d.page_hero && <PageHero {...d.page_hero} />}
+  {d.blocks && <EditorialBlocks blocks={d.blocks} />}
+  {d.cta_band && <CtaBand {...d.cta_band} />}
 </BaseLayout>

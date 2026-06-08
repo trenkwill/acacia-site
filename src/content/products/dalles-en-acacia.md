@@ -1,12 +1,15 @@
 ---
-title: "Dalles en acacia"
+title: Dalles en acacia
 image: /images/image15.jpg
-category: lames
-order: 11
+image_alt: Dalles en acacia
+family: lames
+cat_label: Dalles
+order: 3
+rows:
+  - dt: Formats
+    dd: 27×27, 50×50, 100×100 cm
+  - dt: Origine
+    dd: France, Hongrie
+  - dt: Fournisseurs
+    dd: 2 · PeFC & 100 % FR
 ---
-
-Dimensions standard 50×50, 27×27 et 100×100 cm. Possibilités PeFC et 100 % français.
-
-Fournisseurs : 2 Certifiés : 1
-
-Origine : France, Hongrie

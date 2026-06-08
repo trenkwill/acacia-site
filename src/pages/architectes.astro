@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getEntry } from "astro:content";
+import PageHero from "../components/sections/PageHero.astro";
+import IntroSplit from "../components/sections/IntroSplit.astro";
+import EditorialBlocks from "../components/sections/EditorialBlocks.astro";
+import CtaBand from "../components/sections/CtaBand.astro";
+
+const page = await getEntry("pages", "architectes");
+if (!page) throw new Error("Missing pages/architectes.md");
+const d = page.data;
+---
+
+<BaseLayout
+  title={d.title}
+  description={d.seo_description}
+  screenLabel={d.screen_label}
+>
+  {d.page_hero && <PageHero {...d.page_hero} />}
+  {d.intro_split && <IntroSplit {...d.intro_split} />}
+  {d.blocks && <EditorialBlocks blocks={d.blocks} />}
+  {d.cta_band && <CtaBand {...d.cta_band} />}
+</BaseLayout>

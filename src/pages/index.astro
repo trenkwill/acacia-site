@@ -1,59 +1,27 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getEntry } from "astro:content";
+import Hero from "../components/sections/Hero.astro";
+import Stats from "../components/sections/Stats.astro";
+import IntroSplit from "../components/sections/IntroSplit.astro";
+import ProductsSection from "../components/sections/ProductsSection.astro";
+import ProjectsSection from "../components/sections/ProjectsSection.astro";
+import CtaBand from "../components/sections/CtaBand.astro";
 
-const home = await getEntry("pages", "home");
-const heroTitle = home?.data.hero_title ?? "Filière Robinia Acacia France\nUne ressource d'avenir";
-const heroImage = home?.data.hero_image ?? "/images/robinia-bg.jpg";
-const heroBaseline = home?.data.hero_baseline ?? "Disponibilité, qualités, usages";
-const heroCtaLabel = home?.data.hero_cta_label ?? "En savoir plus";
-const heroCtaUrl = home?.data.hero_cta_url ?? "/about";
+const page = await getEntry("pages", "home");
+if (!page) throw new Error("Missing pages/home.md");
+const d = page.data;
 ---
 
-<BaseLayout title="Accueil" description={home?.data.seo_description}>
-  <div id="accueil">
-    <div id="zone_diaporama">
-      <div class="galerie">
-        <div
-          class="une_diapo"
-          style={`background-image: url('${heroImage}'); display: flex;`}
-        >
-          <div class="titre" set:html={heroTitle.replace(/\n/g, "<br>")} />
-          <a href={heroCtaUrl} class="bouton" title={heroCtaLabel}>
-            {heroCtaLabel}
-          </a>
-          <div class="baseline">{heroBaseline}</div>
-        </div>
-      </div>
-    </div>
-
-    <section id="actualites">
-      <h1>Nos Produits</h1>
-      <div class="zone_wrap">
-        <div class="liste actualites">
-          <div class="une_actualite">
-            <a href="/products#poteaux">
-              <img src="/images/image2.jpg" alt="Poteaux" />
-              <h2>Poteaux & Piquets</h2>
-            </a>
-          </div>
-          <div class="une_actualite">
-            <a href="/products#lames">
-              <img src="/images/image12.jpg" alt="Lames de terrasse" />
-              <h2>Terrasse & Aménagement Extérieur</h2>
-            </a>
-          </div>
-          <div class="une_actualite">
-            <a href="/products#interieur">
-              <img src="/images/image24.jpg" alt="Parquet" />
-              <h2>Aménagement Intérieur</h2>
-            </a>
-          </div>
-        </div>
-        <a href="/products" class="btn_voir_actualites">
-          Produits existant en acacia
-        </a>
-      </div>
-    </section>
-  </div>
+<BaseLayout
+  title={d.title}
+  description={d.seo_description}
+  screenLabel={d.screen_label}
+>
+  {d.hero && <Hero {...d.hero} />}
+  {d.stats && <Stats stats={d.stats} />}
+  {d.intro_split && <IntroSplit {...d.intro_split} />}
+  {d.products_section && <ProductsSection {...d.products_section} />}
+  {d.projects_section && <ProjectsSection {...d.projects_section} />}
+  {d.cta_band && <CtaBand {...d.cta_band} />}
 </BaseLayout>

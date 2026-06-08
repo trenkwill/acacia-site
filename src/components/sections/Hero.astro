@@ -1,0 +1,57 @@
+---
+interface CTA {
+  label: string;
+  url: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  baseline?: string;
+  image: string;
+  image_alt?: string;
+  cta1?: CTA;
+  cta2?: CTA;
+  scroll_label?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  baseline,
+  image,
+  image_alt,
+  cta1,
+  cta2,
+  scroll_label = "Défiler",
+} = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero__bg">
+    <img src={image} alt={image_alt ?? ""} />
+  </div>
+  <div class="wrap hero__inner">
+    {eyebrow && <p class="eyebrow eyebrow--light">{eyebrow}</p>}
+    <h1 class="hero__title h-display" set:html={title} />
+    <div class="hero__rule"></div>
+    {baseline && <p class="hero__baseline">{baseline}</p>}
+    {
+      (cta1 || cta2) && (
+        <div class="hero__cta">
+          {cta1 && (
+            <a href={cta1.url} class="btn btn--light">
+              {cta1.label} <span class="arrow">→</span>
+            </a>
+          )}
+          {cta2 && (
+            <a href={cta2.url} class="btn btn--ghost-light">
+              {cta2.label}
+            </a>
+          )}
+        </div>
+      )
+    }
+  </div>
+  {scroll_label && <span class="hero__scroll">{scroll_label}</span>}
+</section>

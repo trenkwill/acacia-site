@@ -1,0 +1,53 @@
+---
+interface Item {
+  idx: string;
+  title: string;
+  body: string;
+}
+
+interface Props {
+  scheme?: "paper" | "sand";
+  eyebrow?: string;
+  eyebrow_variant?: "default" | "forest";
+  title: string;
+  lead?: string;
+  items: Item[];
+}
+
+const {
+  scheme = "paper",
+  eyebrow,
+  eyebrow_variant = "default",
+  title,
+  lead,
+  items,
+} = Astro.props;
+
+const eyebrowClass = [
+  "eyebrow",
+  eyebrow_variant === "forest" ? "eyebrow--forest" : "",
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<section class:list={["section", { "scheme-sand": scheme === "sand" }]}>
+  <div class="wrap">
+    <div class="section-head reveal">
+      {eyebrow && <p class={eyebrowClass}>{eyebrow}</p>}
+      <h2 class="h2">{title}</h2>
+      {lead && <p class="lead">{lead}</p>}
+    </div>
+    <div class="values reveal" style="margin-top:46px;">
+      {
+        items.map((v) => (
+          <div class="value">
+            <div class="value__idx serif-num">{v.idx}</div>
+            <div class="value__title">{v.title}</div>
+            <p class="value__txt">{v.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

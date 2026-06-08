@@ -1,0 +1,31 @@
+---
+interface Stat {
+  num: string;
+  suffix?: string;
+  label: string;
+}
+
+interface Props {
+  stats: Stat[];
+}
+
+const { stats } = Astro.props;
+---
+
+<section class="section--tight scheme-sand">
+  <div class="wrap">
+    <div class="stats">
+      {
+        stats.map((s) => (
+          <div class="stat">
+            <div class="stat__num">
+              {s.num}
+              {s.suffix && <small>{s.suffix}</small>}
+            </div>
+            <div class="stat__label">{s.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

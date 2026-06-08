@@ -1,8 +1,9 @@
 ---
-title: "Jardin en Acacia"
+title: Jardin en Acacia
 image: /images/projets/robinie-garden.jpeg
-description: "Aménagement de jardin complet en Acacia Robinia : terrasse, clôtures, mobilier. Un écosystème homogène et durable."
+image_alt: Jardin en acacia
+idx: Jardin
+desc: "Aménagement complet : terrasse, clôtures, mobilier. Un écosystème homogène et durable."
+filter_cat: jardin
 order: 25
 ---
-
-

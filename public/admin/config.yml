@@ -1,14 +1,10 @@
-# Sveltia CMS configuration
-# Compatible avec Decap CMS (drop-in replacement)
-# Auth: GitHub OAuth direct (pas de Netlify Identity / Git Gateway)
-#
-# Pour activer : déployer un Worker Cloudflare Sveltia CMS Auth, créer une
-# OAuth App GitHub avec callback https://<worker>.workers.dev/callback,
-# puis renseigner backend.base_url ci-dessous avec l'URL du Worker.
+# Sveltia CMS — compatible Decap CMS
+# Auth GitHub OAuth direct (sans Netlify Identity).
+# Pour activer : déployer le Worker Cloudflare Sveltia CMS Auth et renseigner base_url.
 
 backend:
   name: github
-  repo: trenkwill/acacia-site   # repo GitHub source
+  repo: trenkwill/acacia-site
   branch: main
   base_url: https://sveltia-auth.example.workers.dev
   auth_endpoint: auth
@@ -23,7 +19,11 @@ site_url: https://acacia-france.netlify.app
 display_url: https://acacia-france.netlify.app
 logo_url: /images/logo_acacia.jpg
 
+# Widgets réutilisables (Decap/Sveltia : !include n'existe pas → on duplique)
 collections:
+  # ============================================================
+  # PRODUITS — 21 fiches
+  # ============================================================
   - name: products
     label: "Produits"
     label_singular: "Produit"
@@ -31,44 +31,78 @@ collections:
     create: true
     delete: true
     slug: "{{slug}}"
-    summary: "{{title}}"
-    sortable_fields: [order, title, category]
+    summary: "{{title}} — {{family}}"
+    sortable_fields: [order, title, family]
+    view_filters:
+      - { label: "Poteaux & Piquets", field: family, pattern: poteaux }
+      - { label: "Terrasse & Extérieur", field: family, pattern: lames }
+      - { label: "Mobilier & Aménagement", field: family, pattern: amenagement }
+      - { label: "Aménagement Intérieur", field: family, pattern: interieur }
     fields:
       - { label: "Titre", name: title, widget: string }
       - { label: "Image", name: image, widget: image }
-      - label: "Catégorie"
-        name: category
+      - { label: "Texte alternatif", name: image_alt, widget: string, required: false }
+      - label: "Famille"
+        name: family
         widget: select
         options:
-          - { label: "Poteaux & piquets", value: poteaux }
-          - { label: "Lames & terrasse", value: lames }
-          - { label: "Aménagement intérieur", value: interieur }
-          - { label: "Aménagement extérieur", value: amenagement }
-        default: poteaux
+          - { label: "Poteaux & Piquets", value: poteaux }
+          - { label: "Terrasse & Extérieur", value: lames }
+          - { label: "Mobilier & Aménagement", value: amenagement }
+          - { label: "Aménagement Intérieur", value: interieur }
+      - { label: "Chip catégorie (sur l'image)", name: cat_label, widget: string, hint: "Ex : Poteaux, Lames, Dalles, Toiture, Premium…" }
       - { label: "Ordre d'affichage", name: order, widget: number, default: 0, value_type: int }
-      - { label: "Style image (CSS)", name: image_style, widget: string, required: false, hint: "Ex : object-fit: contain" }
-      - { label: "Brouillon", name: draft, widget: boolean, default: false }
-      - { label: "Description", name: body, widget: markdown }
+      - { label: "Description courte", name: description, widget: text, required: false }
+      - { label: "Image en mode 'contain'", name: contain, widget: boolean, default: false, required: false }
+      - label: "Caractéristiques (lignes du tableau)"
+        name: rows
+        widget: list
+        summary: "{{fields.dt}} — {{fields.dd}}"
+        fields:
+          - { label: "Libellé", name: dt, widget: string }
+          - { label: "Valeur", name: dd, widget: string }
+          - { label: "Format prix (or)", name: price, widget: boolean, default: false, required: false }
+      - { label: "Brouillon", name: draft, widget: boolean, default: false, required: false }
 
+  # ============================================================
+  # PROJETS — 26 réalisations
+  # ============================================================
   - name: projects
-    label: "Projets industriels"
+    label: "Projets"
     label_singular: "Projet"
     folder: "src/content/projects"
     create: true
     delete: true
     slug: "{{slug}}"
-    summary: "{{title}}"
-    sortable_fields: [order, title]
+    summary: "{{title}} · {{idx}}"
+    sortable_fields: [order, title, filter_cat]
+    view_filters:
+      - { label: "Architecture", field: filter_cat, pattern: archi }
+      - { label: "Terrasse & Extérieur", field: filter_cat, pattern: terrasse }
+      - { label: "Clôtures & Garde-corps", field: filter_cat, pattern: cloture }
+      - { label: "Jardin & Mobilier", field: filter_cat, pattern: jardin }
     fields:
       - { label: "Titre", name: title, widget: string }
       - { label: "Image", name: image, widget: image }
-      - { label: "Description", name: description, widget: text }
-      - { label: "Lieu", name: location, widget: string, required: false }
+      - { label: "Texte alternatif", name: image_alt, widget: string, required: false }
+      - { label: "Sous-titre / lieu (chiffre serif)", name: idx, widget: string, hint: "Ex : « Zurich, CH », « Rooftop », « Aire de jeux »" }
+      - { label: "Description", name: desc, widget: text }
+      - label: "Catégorie (filtre)"
+        name: filter_cat
+        widget: select
+        options:
+          - { label: "Architecture", value: archi }
+          - { label: "Terrasse & Extérieur", value: terrasse }
+          - { label: "Clôtures & Garde-corps", value: cloture }
+          - { label: "Jardin & Mobilier", value: jardin }
       - { label: "Ordre d'affichage", name: order, widget: number, default: 0, value_type: int }
-      - { label: "Brouillon", name: draft, widget: boolean, default: false }
+      - { label: "Brouillon", name: draft, widget: boolean, default: false, required: false }
 
+  # ============================================================
+  # PAGES éditoriales
+  # ============================================================
   - name: pages
-    label: "Pages éditoriales"
+    label: "Pages"
     label_singular: "Page"
     folder: "src/content/pages"
     create: false
@@ -78,14 +112,324 @@ collections:
     fields:
       - { label: "Titre (interne)", name: title, widget: string }
       - { label: "Description SEO", name: seo_description, widget: text, required: false }
-      - { label: "Titre principal (hero)", name: hero_title, widget: text, required: false }
-      - { label: "Image principale (hero)", name: hero_image, widget: image, required: false }
-      - { label: "Baseline (hero)", name: hero_baseline, widget: string, required: false }
-      - { label: "Libellé du bouton (hero)", name: hero_cta_label, widget: string, required: false }
-      - { label: "Lien du bouton (hero)", name: hero_cta_url, widget: string, required: false }
-      - { label: "Sous-titre (lead)", name: lead, widget: string, required: false }
-      - { label: "Contenu", name: body, widget: markdown, required: false }
+      - { label: "Label écran (interne)", name: screen_label, widget: string, required: false }
 
+      # --- Page Hero (intérieures) ---
+      - label: "Bannière intérieure (page-hero)"
+        name: page_hero
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Titre H1 (HTML autorisé)", name: title, widget: string }
+          - { label: "Phrase d'accroche", name: lead, widget: string, required: false }
+          - { label: "Fil d'ariane (dernier item)", name: breadcrumb_label, widget: string, required: false }
+          - { label: "Image de fond", name: image, widget: image }
+          - { label: "Texte alt image", name: image_alt, widget: string, required: false }
+          - { label: "Bannière courte", name: short, widget: boolean, default: false, required: false }
+
+      # --- Hero plein écran (accueil) ---
+      - label: "Bannière plein écran (accueil)"
+        name: hero
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Eyebrow", name: eyebrow, widget: string, required: false }
+          - { label: "Titre", name: title, widget: string }
+          - { label: "Baseline", name: baseline, widget: string, required: false }
+          - { label: "Image", name: image, widget: image }
+          - { label: "Alt image", name: image_alt, widget: string, required: false }
+          - label: "Bouton principal"
+            name: cta1
+            widget: object
+            required: false
+            fields:
+              - { label: "Libellé", name: label, widget: string }
+              - { label: "URL", name: url, widget: string }
+          - label: "Bouton secondaire"
+            name: cta2
+            widget: object
+            required: false
+            fields:
+              - { label: "Libellé", name: label, widget: string }
+              - { label: "URL", name: url, widget: string }
+          - { label: "Texte 'défiler'", name: scroll_label, widget: string, default: "Défiler", required: false }
+
+      # --- Stats strip (accueil) ---
+      - label: "Bandeau chiffres (accueil)"
+        name: stats
+        widget: list
+        required: false
+        summary: "{{fields.num}} — {{fields.label}}"
+        fields:
+          - { label: "Chiffre", name: num, widget: string }
+          - { label: "Suffixe", name: suffix, widget: string, required: false }
+          - { label: "Légende", name: label, widget: string }
+
+      # --- Intro Split ---
+      - label: "Section split (image + texte)"
+        name: intro_split
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Fond", name: scheme, widget: select, options: [paper, sand], default: paper }
+          - { label: "Eyebrow", name: eyebrow, widget: string, required: false }
+          - { label: "Variant eyebrow", name: eyebrow_variant, widget: select, options: [default, forest], default: default, required: false }
+          - { label: "Titre (HTML <br/> autorisé)", name: title, widget: string }
+          - { label: "Lead", name: lead, widget: string, required: false }
+          - { label: "Texte secondaire", name: body, widget: text, required: false }
+          - { label: "Image", name: image, widget: image, required: false }
+          - { label: "Alt image", name: image_alt, widget: string, required: false }
+          - { label: "Tag image (mot serif)", name: image_tag_num, widget: string, required: false }
+          - { label: "Tag image (reste)", name: image_tag_rest, widget: string, required: false }
+          - { label: "Image haute", name: image_tall, widget: boolean, default: false, required: false }
+          - { label: "Position image", name: image_position, widget: select, options: [left, right], default: left, required: false }
+          - { label: "Variante narrow text", name: narrow_text, widget: boolean, default: false, required: false }
+          - label: "Bouton 1"
+            name: cta1
+            widget: object
+            required: false
+            fields:
+              - { label: "Libellé", name: label, widget: string }
+              - { label: "URL", name: url, widget: string }
+          - label: "Bouton 2"
+            name: cta2
+            widget: object
+            required: false
+            fields:
+              - { label: "Libellé", name: label, widget: string }
+              - { label: "URL", name: url, widget: string }
+
+      # --- Section Mission (association) ---
+      - label: "Section mission (split avec liste)"
+        name: mission_section
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Fond", name: scheme, widget: select, options: [paper, sand], default: sand }
+          - { label: "Eyebrow", name: eyebrow, widget: string, required: false }
+          - { label: "Titre", name: title, widget: string }
+          - { label: "Texte d'intro", name: body, widget: text, required: false }
+          - label: "Items (liste à puces)"
+            name: items
+            widget: list
+            field: { label: "Item", name: text, widget: string }
+
+      # --- Section Valeurs (association, architectes) ---
+      - label: "Section 'cartes numérotées' (valeurs / défis)"
+        name: values_section
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Fond", name: scheme, widget: select, options: [paper, sand], default: paper }
+          - { label: "Eyebrow", name: eyebrow, widget: string, required: false }
+          - { label: "Variant eyebrow", name: eyebrow_variant, widget: select, options: [default, forest], default: default, required: false }
+          - { label: "Titre", name: title, widget: string }
+          - { label: "Lead", name: lead, widget: string, required: false }
+          - label: "Cartes"
+            name: items
+            widget: list
+            summary: "{{fields.idx}} — {{fields.title}}"
+            fields:
+              - { label: "Chiffre/code (serif italique)", name: idx, widget: string }
+              - { label: "Titre", name: title, widget: string }
+              - { label: "Texte", name: body, widget: text }
+
+      # --- Products section (accueil) ---
+      - label: "Section produits vedettes (accueil)"
+        name: products_section
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Fond", name: scheme, widget: select, options: [paper, sand], default: sand }
+          - { label: "Eyebrow", name: eyebrow, widget: string, required: false }
+          - { label: "Titre", name: title, widget: string }
+          - { label: "Lead", name: lead, widget: string, required: false }
+          - label: "Cartes (familles produits)"
+            name: cards
+            widget: list
+            summary: "{{fields.idx}} — {{fields.title}}"
+            fields:
+              - { label: "Numéro/code", name: idx, widget: string, required: false }
+              - { label: "Titre", name: title, widget: string }
+              - { label: "Image", name: image, widget: image }
+              - { label: "Alt image", name: image_alt, widget: string, required: false }
+              - { label: "URL", name: url, widget: string }
+          - { label: "Libellé du lien 'tout voir'", name: more_label, widget: string, required: false }
+          - { label: "URL du lien 'tout voir'", name: more_url, widget: string, required: false }
+
+      # --- Projects section (accueil) ---
+      - label: "Section projets vedettes (accueil)"
+        name: projects_section
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Fond", name: scheme, widget: select, options: [paper, sand], default: paper }
+          - { label: "Eyebrow", name: eyebrow, widget: string, required: false }
+          - { label: "Variant eyebrow", name: eyebrow_variant, widget: select, options: [default, forest], default: default, required: false }
+          - { label: "Titre", name: title, widget: string }
+          - { label: "Lead", name: lead, widget: string, required: false }
+          - label: "Cartes (projets en avant)"
+            name: cards
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Sous-titre (serif italique)", name: idx, widget: string, required: false }
+              - { label: "Titre", name: title, widget: string }
+              - { label: "Image", name: image, widget: image }
+              - { label: "Alt image", name: image_alt, widget: string, required: false }
+              - { label: "Description", name: desc, widget: text }
+              - { label: "URL", name: url, widget: string }
+              - label: "Catégorie filtre"
+                name: filter_cat
+                widget: select
+                options:
+                  - { label: "Architecture", value: archi }
+                  - { label: "Terrasse", value: terrasse }
+                  - { label: "Clôtures", value: cloture }
+                  - { label: "Jardin", value: jardin }
+                required: false
+          - { label: "Libellé 'tout voir'", name: more_label, widget: string, required: false }
+          - { label: "URL 'tout voir'", name: more_url, widget: string, required: false }
+
+      # --- Blocs éditoriaux (acacia, architectes) ---
+      - label: "Blocs éditoriaux (acacia, architectes)"
+        name: blocks
+        widget: list
+        required: false
+        summary: "{{fields.type}}"
+        types:
+          - label: "Split image + texte"
+            name: split
+            widget: object
+            fields:
+              - { label: "Type", name: type, widget: hidden, default: split }
+              - { label: "Fond", name: scheme, widget: select, options: [paper, sand], default: paper }
+              - { label: "Eyebrow", name: eyebrow, widget: string, required: false }
+              - { label: "Variant eyebrow", name: eyebrow_variant, widget: select, options: [default, forest], default: default, required: false }
+              - { label: "Titre", name: title, widget: string, required: false }
+              - { label: "Lead", name: lead, widget: string, required: false }
+              - { label: "Corps (Markdown)", name: body, widget: markdown, required: false }
+              - { label: "Image", name: image, widget: image, required: false }
+              - { label: "Alt image", name: image_alt, widget: string, required: false }
+              - { label: "Tag image (serif)", name: image_tag_num, widget: string, required: false }
+              - { label: "Tag image (reste)", name: image_tag_rest, widget: string, required: false }
+              - { label: "Image haute", name: image_tall, widget: boolean, default: false, required: false }
+              - { label: "Position image", name: image_position, widget: select, options: [left, right], default: right, required: false }
+              - { label: "Narrow text", name: narrow_text, widget: boolean, default: false, required: false }
+              - label: "Bouton 1"
+                name: cta1
+                widget: object
+                required: false
+                fields:
+                  - { label: "Libellé", name: label, widget: string }
+                  - { label: "URL", name: url, widget: string }
+              - label: "Bouton 2"
+                name: cta2
+                widget: object
+                required: false
+                fields:
+                  - { label: "Libellé", name: label, widget: string }
+                  - { label: "URL", name: url, widget: string }
+
+          - label: "Prose centrée (texte seul)"
+            name: prose-narrow
+            widget: object
+            fields:
+              - { label: "Type", name: type, widget: hidden, default: prose-narrow }
+              - { label: "Fond", name: scheme, widget: select, options: [paper, sand], default: paper }
+              - { label: "Corps (Markdown)", name: body, widget: markdown }
+
+          - label: "Deux colonnes prose"
+            name: two-prose
+            widget: object
+            fields:
+              - { label: "Type", name: type, widget: hidden, default: two-prose }
+              - { label: "Fond", name: scheme, widget: select, options: [paper, sand], default: sand }
+              - { label: "Colonne gauche (Markdown)", name: body_left, widget: markdown }
+              - { label: "Colonne droite (Markdown)", name: body_right, widget: markdown }
+
+          - label: "Citation chiffrée (pull)"
+            name: pull
+            widget: object
+            fields:
+              - { label: "Type", name: type, widget: hidden, default: pull }
+              - { label: "Fond", name: scheme, widget: select, options: [paper, sand], default: paper }
+              - { label: "Chiffre (serif or)", name: num, widget: string, hint: "Ex : « ×2 », « 90% »" }
+              - { label: "Texte (Markdown)", name: body, widget: markdown }
+
+          - label: "Barres de comparaison"
+            name: bars
+            widget: object
+            fields:
+              - { label: "Type", name: type, widget: hidden, default: bars }
+              - { label: "Fond", name: scheme, widget: select, options: [paper, sand], default: sand }
+              - { label: "Eyebrow", name: eyebrow, widget: string, required: false }
+              - { label: "Titre", name: title, widget: string, required: false }
+              - { label: "Lead", name: lead, widget: string, required: false }
+              - label: "Barres"
+                name: bars
+                widget: list
+                summary: "{{fields.name}} ({{fields.percent}}%)"
+                fields:
+                  - { label: "Nom", name: name, widget: string }
+                  - { label: "Valeur (étiquette)", name: value, widget: string }
+                  - { label: "Pourcentage (0–100)", name: percent, widget: number, value_type: int, min: 0, max: 100 }
+                  - { label: "Mise en avant (vert forêt)", name: hero, widget: boolean, default: false, required: false }
+
+          - label: "Cartes numérotées (valeurs)"
+            name: values
+            widget: object
+            fields:
+              - { label: "Type", name: type, widget: hidden, default: values }
+              - { label: "Fond", name: scheme, widget: select, options: [paper, sand], default: paper }
+              - { label: "Eyebrow", name: eyebrow, widget: string, required: false }
+              - { label: "Variant eyebrow", name: eyebrow_variant, widget: select, options: [default, forest], default: default, required: false }
+              - { label: "Titre", name: title, widget: string, required: false }
+              - { label: "Lead", name: lead, widget: string, required: false }
+              - label: "Cartes"
+                name: items
+                widget: list
+                summary: "{{fields.idx}} — {{fields.title}}"
+                fields:
+                  - { label: "Code (serif italique)", name: idx, widget: string }
+                  - { label: "Titre", name: title, widget: string }
+                  - { label: "Texte", name: body, widget: text }
+
+      # --- CTA Band (closing) ---
+      - label: "Bandeau CTA (fin de page)"
+        name: cta_band
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Eyebrow", name: eyebrow, widget: string, required: false }
+          - { label: "Titre", name: title, widget: string }
+          - { label: "Lead", name: lead, widget: string, required: false }
+          - label: "Bouton principal"
+            name: cta1
+            widget: object
+            required: false
+            fields:
+              - { label: "Libellé", name: label, widget: string }
+              - { label: "URL", name: url, widget: string }
+          - label: "Bouton secondaire"
+            name: cta2
+            widget: object
+            required: false
+            fields:
+              - { label: "Libellé", name: label, widget: string }
+              - { label: "URL", name: url, widget: string }
+
+  # ============================================================
+  # RÉGLAGES GÉNÉRAUX
+  # ============================================================
   - name: settings
     label: "Réglages du site"
     files:
@@ -97,14 +441,19 @@ collections:
           - { label: "Titre du site", name: site_title, widget: string }
           - { label: "Tagline", name: tagline, widget: string }
           - { label: "Logo", name: logo, widget: image }
+          - { label: "Nom marque (partie 1)", name: brand_name_a, widget: string }
+          - { label: "Nom marque (partie 2, en gras)", name: brand_name_b, widget: string }
+          - { label: "Sous-titre marque", name: brand_sub, widget: string }
           - label: "Items de navigation"
             name: nav_items
             widget: list
+            summary: "{{fields.label}} → {{fields.url}}"
             fields:
               - { label: "Libellé", name: label, widget: string }
               - { label: "URL", name: url, widget: string }
-          - { label: "Email du footer", name: footer_email, widget: string }
-          - { label: "Crédits du footer", name: footer_credits, widget: string }
+          - { label: "Texte d'introduction footer", name: footer_blurb, widget: text }
+          - { label: "Email footer", name: footer_email, widget: string }
+          - { label: "Crédits footer", name: footer_credits, widget: string }
           - label: "Contact principal"
             name: contact_main
             widget: object
@@ -112,7 +461,7 @@ collections:
               - { label: "Libellé", name: label, widget: string }
               - { label: "Personne", name: person, widget: string }
               - { label: "Téléphone (affichage)", name: phone, widget: string }
-              - { label: "Téléphone (lien)", name: phone_link, widget: string, hint: "Ex : tel:+33680131598" }
+              - { label: "Téléphone (lien tel:)", name: phone_link, widget: string }
               - { label: "Email", name: email, widget: string }
           - label: "Contact technique"
             name: contact_technical

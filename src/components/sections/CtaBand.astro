@@ -1,0 +1,56 @@
+---
+interface CTA {
+  label: string;
+  url: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  cta1?: CTA;
+  cta2?: CTA;
+  marginTop?: string;
+}
+
+const { eyebrow, title, lead, cta1, cta2, marginTop } = Astro.props;
+---
+
+<section
+  class="cta-band"
+  style={marginTop ? `margin-top: ${marginTop};` : undefined}
+>
+  <div class="wrap cta-band__inner">
+    <div>
+      {eyebrow && <p class="eyebrow eyebrow--light">{eyebrow}</p>}
+      <h2
+        class="h2 cta-band__title"
+        style="color:var(--paper); margin-top:14px;"
+        set:html={title}
+      />
+      {
+        lead && (
+          <p class="lead" style="margin-top:16px;">
+            {lead}
+          </p>
+        )
+      }
+    </div>
+    {
+      (cta1 || cta2) && (
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          {cta1 && (
+            <a href={cta1.url} class="btn btn--light">
+              {cta1.label} <span class="arrow">→</span>
+            </a>
+          )}
+          {cta2 && (
+            <a href={cta2.url} class="btn btn--ghost-light">
+              {cta2.label}
+            </a>
+          )}
+        </div>
+      )
+    }
+  </div>
+</section>

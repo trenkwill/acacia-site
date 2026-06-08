@@ -1,8 +1,9 @@
 ---
-title: "Centre de Congrès de Mons"
+title: Centre de Congrès de Mons
 image: /images/projets/mons-congress-center.jpg
-description: "Le Centre de Congrès de Mons (Belgique) intègre l'Acacia Robinia dans ses façades et espaces extérieurs. Projet emblématique de l'architecture contemporaine belge."
+image_alt: Centre de Congrès de Mons
+idx: Mons, BE
+desc: Façades et espaces extérieurs en acacia robinia. Projet emblématique de l'architecture contemporaine belge.
+filter_cat: archi
 order: 8
 ---
-
-

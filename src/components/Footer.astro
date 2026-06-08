@@ -1,42 +1,36 @@
 ---
 import settings from "../data/settings.json";
+
+const year = 2026;
 ---
 
-<footer style="margin-top: 50px;">
-  <div id="footer_contact" style="width: 100%; background-color: #f4f4f4;">
-    <div
-      class="zone_wrap"
-      style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; padding: 2px 20px;"
-    >
-      <div class="footer-col-logo" style="flex: 0 0 auto;">
-        <img
-          src={settings.logo}
-          alt="logo filière acacia"
-          style="width:100px;height:auto; display: block;"
-        />
+<footer class="site-footer">
+  <div class="wrap site-footer__top">
+    <div class="footer-brand">
+      <div class="footer-brand__name">
+        {settings.brand_name_a} <b>{settings.brand_name_b}</b>
       </div>
-      <div class="footer-col-info" style="flex: 0 0 auto; text-align: center;">
-        <p
-          class="adresse"
-          style="margin: 0; font-size: 0.8rem; line-height: 1.2;"
-        >
-          <strong>{settings.site_title}</strong><br />
-          <a
-            href={`mailto:${settings.footer_email}`}
-            style="text-decoration: none; color: inherit;"
-          >
-            {settings.footer_email}
-          </a>
-        </p>
-      </div>
+      <p>{settings.footer_blurb}</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col__title">Navigation</div>
+      <a href="/association">L'Association</a>
+      <a href="/acacia">L'Acacia</a>
+      <a href="/projets">Projets industriels</a>
+      <a href="/produits">Nos produits</a>
+      <a href="/architectes">Architectes</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col__title">Contact</div>
+      <p>
+        {settings.contact_main.label}<br />{settings.contact_main.person}
+      </p>
+      <a href={settings.contact_main.phone_link}>{settings.contact_main.phone}</a>
+      <a href={`mailto:${settings.footer_email}`}>{settings.footer_email}</a>
     </div>
   </div>
-  <p
-    id="footer_credits"
-    style="font-size: 0.7rem; margin: 0; text-align: center;"
-  >
-    <a href="#" style="text-decoration: none; color: inherit;">
-      {settings.footer_credits}
-    </a>
-  </p>
+  <div class="wrap site-footer__bottom">
+    <span>© {year} {settings.site_title}</span>
+    <span>{settings.footer_credits}</span>
+  </div>
 </footer>

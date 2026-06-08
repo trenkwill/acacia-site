@@ -9,23 +9,19 @@ const { currentPath } = Astro.props;
 
 function isActive(itemUrl: string, current: string): boolean {
   if (itemUrl === "/") return current === "/" || current === "";
-  return current.startsWith(itemUrl);
+  return current === itemUrl || current.startsWith(itemUrl + "/");
 }
 ---
 
-<div id="menu_principal">
-  <ul id="nav_pages">
-    {
-      settings.nav_items.map((item) => (
-        <li>
-          <a
-            href={item.url}
-            class={isActive(item.url, currentPath) ? "active" : ""}
-          >
-            {item.label}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-</div>
+<nav class="nav" aria-label="Navigation principale">
+  {
+    settings.nav_items.map((item) => (
+      <a
+        href={item.url}
+        class:list={["nav__link", { "is-active": isActive(item.url, currentPath) }]}
+      >
+        {item.label}
+      </a>
+    ))
+  }
+</nav>

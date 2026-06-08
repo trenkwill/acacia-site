@@ -12,7 +12,17 @@
 
 [[redirects]]
   from = "/about.html"
-  to = "/about"
+  to = "/association"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/association"
+  status = 301
+
+[[redirects]]
+  from = "/association.html"
+  to = "/association"
   status = 301
 
 [[redirects]]
@@ -27,12 +37,32 @@
 
 [[redirects]]
   from = "/products.html"
-  to = "/products"
+  to = "/produits"
+  status = 301
+
+[[redirects]]
+  from = "/products"
+  to = "/produits"
+  status = 301
+
+[[redirects]]
+  from = "/produits.html"
+  to = "/produits"
   status = 301
 
 [[redirects]]
   from = "/architects.html"
-  to = "/architects"
+  to = "/architectes"
+  status = 301
+
+[[redirects]]
+  from = "/architects"
+  to = "/architectes"
+  status = 301
+
+[[redirects]]
+  from = "/architectes.html"
+  to = "/architectes"
   status = 301
 
 [[redirects]]

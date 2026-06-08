@@ -1,12 +1,18 @@
 ---
-title: "Poteaux fraisés en acacia"
+title: Poteaux fraisés en acacia
 image: /images/image5.JPG
-category: poteaux
+image_alt: Poteaux fraisés acacia
+family: poteaux
+cat_label: Poteaux
 order: 4
+rows:
+  - dt: Diamètre
+    dd: 4 à 20 cm
+  - dt: Longueur
+    dd: 0,4 à 2,5 m
+  - dt: Prix
+    dd: 2 000 € / m³
+    price: true
+  - dt: Origine
+    dd: Hongrie, Italie, France
 ---
-
-Diamètre de 4 à 20 cm Longueurs de 0,4 à 2,5 m. Prix : 2000 € le m³
-
-Fournisseurs : +/- 3 Possibilités en PeFC
-
-Origine : Hongrie, Italie, France

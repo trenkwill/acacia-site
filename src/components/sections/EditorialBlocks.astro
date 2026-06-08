@@ -1,0 +1,214 @@
+---
+import { mdHtml } from "../../lib/md";
+
+type CTA = { label: string; url: string };
+type Block =
+  | {
+      type: "split";
+      scheme?: "paper" | "sand";
+      eyebrow?: string;
+      eyebrow_variant?: "default" | "forest";
+      title?: string;
+      lead?: string;
+      body?: string;
+      image?: string;
+      image_alt?: string;
+      image_tag_num?: string;
+      image_tag_rest?: string;
+      image_tall?: boolean;
+      image_position?: "left" | "right";
+      narrow_text?: boolean;
+      cta1?: CTA;
+      cta2?: CTA;
+    }
+  | { type: "prose-narrow"; scheme?: "paper" | "sand"; body: string }
+  | {
+      type: "two-prose";
+      scheme?: "paper" | "sand";
+      body_left: string;
+      body_right: string;
+    }
+  | { type: "pull"; scheme?: "paper" | "sand"; num: string; body: string }
+  | {
+      type: "bars";
+      scheme?: "paper" | "sand";
+      eyebrow?: string;
+      title?: string;
+      lead?: string;
+      bars: { name: string; value: string; percent: number; hero?: boolean }[];
+    }
+  | {
+      type: "values";
+      scheme?: "paper" | "sand";
+      eyebrow?: string;
+      eyebrow_variant?: "default" | "forest";
+      title?: string;
+      lead?: string;
+      items: { idx: string; title: string; body: string }[];
+    };
+
+interface Props {
+  blocks: Block[];
+}
+
+const { blocks } = Astro.props;
+
+function esc(s: string | undefined): string {
+  if (!s) return "";
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function sectionCls(scheme?: "paper" | "sand"): string {
+  return scheme === "sand" ? "section scheme-sand" : "section";
+}
+
+function renderBlock(b: Block): string {
+  if (b.type === "split") {
+    const ebClass = [
+      "eyebrow",
+      b.eyebrow_variant === "forest" ? "eyebrow--forest" : "",
+    ]
+      .filter(Boolean)
+      .join(" ");
+
+    const mediaHtml = b.image
+      ? `<div class="split__media${b.image_tall ? " split__media--tall" : ""}">
+           <img src="${esc(b.image)}" alt="${esc(b.image_alt)}" />
+           ${
+             b.image_tag_num
+               ? `<span class="split__tag"><span class="serif-num">${esc(b.image_tag_num)}</span>${esc(b.image_tag_rest)}</span>`
+               : ""
+           }
+         </div>`
+      : "";
+
+    const ctas =
+      b.cta1 || b.cta2
+        ? `<p style="margin-top:28px;">
+             ${
+               b.cta1
+                 ? `<a href="${esc(b.cta1.url)}" class="btn btn--ghost" style="border-color:var(--ink);">${esc(b.cta1.label)} <span class="arrow">→</span></a>`
+                 : ""
+             }
+             ${
+               b.cta2
+                 ? `<a href="${esc(b.cta2.url)}" class="btn btn--ghost">${esc(b.cta2.label)}</a>`
+                 : ""
+             }
+           </p>`
+        : "";
+
+    const textHtml = `<div class="prose" style="max-width:none;">
+        ${b.eyebrow ? `<p class="${ebClass}">${esc(b.eyebrow)}</p>` : ""}
+        ${b.title ? `<h2 class="h2" style="margin-top:14px;">${b.title}</h2>` : ""}
+        ${b.lead ? `<p class="lead" style="margin-top:18px;">${esc(b.lead)}</p>` : ""}
+        ${mdHtml(b.body)}
+        ${ctas}
+      </div>`;
+
+    const inner =
+      b.image_position === "left"
+        ? mediaHtml + textHtml
+        : textHtml + mediaHtml;
+
+    return `<section class="${sectionCls(b.scheme)}">
+      <div class="wrap">
+        <div class="split reveal${b.narrow_text ? " split--narrow-text" : ""}">${inner}</div>
+      </div>
+    </section>`;
+  }
+
+  if (b.type === "prose-narrow") {
+    return `<section class="${sectionCls(b.scheme)}">
+      <div class="wrap wrap--narrow">
+        <div class="prose reveal" style="margin-inline:auto;">${mdHtml(b.body)}</div>
+      </div>
+    </section>`;
+  }
+
+  if (b.type === "two-prose") {
+    return `<section class="${sectionCls(b.scheme)}">
+      <div class="wrap">
+        <div class="split split--narrow-text reveal">
+          <div class="prose" style="max-width:none;">${mdHtml(b.body_left)}</div>
+          <div class="prose" style="max-width:none;">${mdHtml(b.body_right)}</div>
+        </div>
+      </div>
+    </section>`;
+  }
+
+  if (b.type === "pull") {
+    const cls = b.scheme === "sand" ? "section scheme-sand" : "section";
+    return `<section class="${cls}">
+      <div class="wrap">
+        <div class="pull reveal">
+          <div class="pull__num">${esc(b.num)}</div>
+          <div class="pull__txt">${mdHtml(b.body)}</div>
+        </div>
+      </div>
+    </section>`;
+  }
+
+  if (b.type === "bars") {
+    const head = `<div class="section-head reveal">
+      ${b.eyebrow ? `<p class="eyebrow">${esc(b.eyebrow)}</p>` : ""}
+      ${b.title ? `<h2 class="h2">${esc(b.title)}</h2>` : ""}
+      ${b.lead ? `<p class="lead">${esc(b.lead)}</p>` : ""}
+    </div>`;
+    const rows = b.bars
+      .map(
+        (bar) => `<div class="bar${bar.hero ? " bar--hero" : ""}">
+        <div class="bar__name">${esc(bar.name)}</div>
+        <div class="bar__track"><div class="bar__fill" style="width:${bar.percent}%;"></div></div>
+        <div class="bar__val">${esc(bar.value)}</div>
+      </div>`
+      )
+      .join("");
+    return `<section class="${sectionCls(b.scheme)}">
+      <div class="wrap">
+        ${head}
+        <div class="bars reveal" style="margin-top:48px; max-width:760px;">${rows}</div>
+      </div>
+    </section>`;
+  }
+
+  if (b.type === "values") {
+    const ebClass = [
+      "eyebrow",
+      b.eyebrow_variant === "forest" ? "eyebrow--forest" : "",
+    ]
+      .filter(Boolean)
+      .join(" ");
+    const head = `<div class="section-head reveal">
+      ${b.eyebrow ? `<p class="${ebClass}">${esc(b.eyebrow)}</p>` : ""}
+      ${b.title ? `<h2 class="h2">${esc(b.title)}</h2>` : ""}
+      ${b.lead ? `<p class="lead">${esc(b.lead)}</p>` : ""}
+    </div>`;
+    const items = b.items
+      .map(
+        (it) => `<div class="value">
+        <div class="value__idx serif-num">${esc(it.idx)}</div>
+        <div class="value__title">${esc(it.title)}</div>
+        <p class="value__txt">${esc(it.body)}</p>
+      </div>`
+      )
+      .join("");
+    return `<section class="${sectionCls(b.scheme)}">
+      <div class="wrap">
+        ${head}
+        <div class="values reveal" style="margin-top:44px;">${items}</div>
+      </div>
+    </section>`;
+  }
+
+  return "";
+}
+
+const html = blocks.map(renderBlock).join("\n");
+---
+
+<Fragment set:html={html} />

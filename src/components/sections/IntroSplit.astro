@@ -1,0 +1,125 @@
+---
+import { mdHtml } from "../../lib/md";
+
+interface CTA {
+  label: string;
+  url: string;
+}
+
+interface Props {
+  scheme?: "paper" | "sand";
+  eyebrow?: string;
+  eyebrow_variant?: "default" | "forest";
+  title: string;
+  lead?: string;
+  body?: string;
+  image?: string;
+  image_alt?: string;
+  image_tag_num?: string;
+  image_tag_rest?: string;
+  image_tall?: boolean;
+  image_position?: "left" | "right";
+  narrow_text?: boolean;
+  cta1?: CTA;
+  cta2?: CTA;
+}
+
+const {
+  scheme = "paper",
+  eyebrow,
+  eyebrow_variant = "default",
+  title,
+  lead,
+  body,
+  image,
+  image_alt,
+  image_tag_num,
+  image_tag_rest,
+  image_tall = false,
+  image_position = "left",
+  narrow_text = false,
+  cta1,
+  cta2,
+} = Astro.props;
+
+const eyebrowClass = [
+  "eyebrow",
+  eyebrow_variant === "forest" ? "eyebrow--forest" : "",
+]
+  .filter(Boolean)
+  .join(" ");
+
+const mediaBlock = image
+  ? `<div class="split__media${image_tall ? " split__media--tall" : ""}">
+       <img src="${image}" alt="${image_alt ?? ""}" />
+       ${
+         image_tag_num
+           ? `<span class="split__tag"><span class="serif-num">${image_tag_num}</span>${image_tag_rest ?? ""}</span>`
+           : ""
+       }
+     </div>`
+  : null;
+---
+
+<section
+  class:list={["section", { "scheme-sand": scheme === "sand" }]}
+>
+  <div class="wrap">
+    <div
+      class:list={[
+        "split",
+        "reveal",
+        { "split--narrow-text": narrow_text },
+      ]}
+    >
+      {
+        image_position === "left" && mediaBlock && (
+          <Fragment set:html={mediaBlock} />
+        )
+      }
+      <div>
+        {eyebrow && <p class={eyebrowClass}>{eyebrow}</p>}
+        <h2 class="h1" set:html={title} style={eyebrow ? "" : "margin-top:0;"} />
+        {
+          lead && (
+            <p class="lead" style="margin-top:24px;">
+              {lead}
+            </p>
+          )
+        }
+        {
+          body && (
+            <p style="margin-top:20px; color:var(--ink-soft);">
+              {body}
+            </p>
+          )
+        }
+        {
+          (cta1 || cta2) && (
+            <div style="margin-top:32px; display:flex; gap:14px; flex-wrap:wrap;">
+              {cta1 && (
+                <a href={cta1.url} class="btn btn--ghost">
+                  {cta1.label} <span class="arrow">→</span>
+                </a>
+              )}
+              {cta2 && (
+                <a
+                  href={cta2.url}
+                  class="btn btn--ghost"
+                  style="border-color:var(--line);"
+                >
+                  {cta2.label}
+                </a>
+              )}
+            </div>
+          )
+        }
+      </div>
+      {
+        image_position === "right" && mediaBlock && (
+          <Fragment set:html={mediaBlock} />
+        )
+      }
+    </div>
+  </div>
+</section>

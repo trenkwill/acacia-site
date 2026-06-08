@@ -2,76 +2,130 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getEntry } from "astro:content";
 import settings from "../data/settings.json";
-import ContactForm from "../components/ContactForm.astro";
-import ContactCard from "../components/ContactCard.astro";
+import PageHero from "../components/sections/PageHero.astro";
 
 const page = await getEntry("pages", "contact");
-
-const success = Astro.url.searchParams.get("success") === "1";
+if (!page) throw new Error("Missing pages/contact.md");
+const d = page.data;
 ---
 
 <BaseLayout
-  title={page?.data.title ?? "Contact"}
-  description={page?.data.seo_description}
+  title={d.title}
+  description={d.seo_description}
+  screenLabel={d.screen_label}
 >
-  <div class="page-header">
-    <h1>{page?.data.hero_title ?? "Contact"}</h1>
-    <p class="lead">{page?.data.lead ?? "Nous sommes à votre écoute"}</p>
-  </div>
+  {d.page_hero && <PageHero {...d.page_hero} />}
 
-  <section class="content-section">
-    <div class="container">
+  <section class="section">
+    <div class="wrap">
       <div class="contact-layout">
-        <div class="contact-form-container">
-          <h2>Envoyez-nous un message</h2>
-
-          {
-            success && (
-              <p class="form-success">
-                Merci, votre message a bien été envoyé. Nous vous répondrons
-                rapidement.
-              </p>
-            )
-          }
-
-          <ContactForm />
+        <div class="reveal">
+          <p class="eyebrow eyebrow--forest">Écrivez-nous</p>
+          <h2 class="h2" style="margin-top:12px;">Envoyez-nous un message</h2>
+          <div class="form-success" id="form-success">
+            <b>Merci, votre message a bien été envoyé.</b><br />
+            Nous vous répondrons rapidement.
+          </div>
+          <form
+            class="contact-form"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/contact?success=1"
+            style="margin-top:34px;"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p style="position:absolute;left:-9999px;">
+              <label>Ne pas remplir : <input name="bot-field" /></label>
+            </p>
+            <div class="form-grid">
+              <div class="form-row">
+                <label for="name">Nom *</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-row">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-row">
+                <label for="phone">Téléphone</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+              <div class="form-row">
+                <label for="subject">Sujet *</label>
+                <select id="subject" name="subject" required>
+                  <option value="">— Sélectionnez —</option>
+                  <option value="info">Demande d'information</option>
+                  <option value="sourcing">Approvisionnement en acacia</option>
+                  <option value="technical">Question technique</option>
+                  <option value="partnership">Partenariat</option>
+                  <option value="other">Autre</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+            <button type="submit" class="btn">
+              Envoyer le message <span class="arrow">→</span>
+            </button>
+            <p class="form-note">* Champs obligatoires</p>
+          </form>
         </div>
 
-        <div class="contact-info-container">
-          <h2>Coordonnées</h2>
+        <div class="reveal">
+          <p class="eyebrow">Coordonnées</p>
+          <h2 class="h2" style="margin-top:12px; margin-bottom:28px;">
+            Nous joindre
+          </h2>
 
-          <ContactCard heading={settings.contact_main.label}>
-            <div class="contact-item">
-              <strong>Contact principal :</strong><br />
-              {settings.contact_main.person}
+          <div class="info-card">
+            <div class="info-card__head">{settings.contact_main.label}</div>
+            <div class="info-card__row">
+              <span>Contact principal</span>{settings.contact_main.person}
             </div>
-            <div class="contact-item">
-              <strong>Téléphone :</strong><br />
+            <div class="info-card__row">
+              <span>Téléphone</span>
               <a href={settings.contact_main.phone_link}>
                 {settings.contact_main.phone}
               </a>
             </div>
-            <div class="contact-item">
-              <strong>Email :</strong><br />
+            <div class="info-card__row">
+              <span>Email</span>
               <a href={`mailto:${settings.contact_main.email}`}>
                 {settings.contact_main.email}
               </a>
             </div>
-          </ContactCard>
+          </div>
 
-          <ContactCard heading={settings.contact_technical.label}>
-            <div class="contact-item">
-              <strong>{settings.contact_technical.person}</strong><br />
+          <div class="info-card">
+            <div class="info-card__head">
+              {settings.contact_technical.label}
+            </div>
+            <div class="info-card__row">
+              <span>Référent</span>{settings.contact_technical.person}
+            </div>
+            <div class="info-card__row">
+              <span>Email</span>
               <a href={`mailto:${settings.contact_technical.email}`}>
                 {settings.contact_technical.email}
               </a>
             </div>
-            <p class="note">{settings.contact_technical.note}</p>
-          </ContactCard>
+            <p class="info-card__note">
+              {settings.contact_technical.note}
+            </p>
+          </div>
 
-          <ContactCard heading="Notre mission">
-            <p>{settings.mission_text}</p>
-          </ContactCard>
+          <div class="info-card">
+            <div class="info-card__head">Notre mission</div>
+            <p class="info-card__note" style="margin-top:0;">
+              {settings.mission_text}
+            </p>
+          </div>
         </div>
       </div>
     </div>

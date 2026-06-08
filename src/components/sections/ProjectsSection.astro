@@ -1,0 +1,77 @@
+---
+interface Card {
+  idx?: string;
+  title: string;
+  image: string;
+  image_alt?: string;
+  desc: string;
+  url: string;
+  filter_cat?: "archi" | "terrasse" | "cloture" | "jardin";
+}
+
+interface Props {
+  scheme?: "paper" | "sand";
+  eyebrow?: string;
+  eyebrow_variant?: "default" | "forest";
+  title: string;
+  lead?: string;
+  cards: Card[];
+  more_label?: string;
+  more_url?: string;
+}
+
+const {
+  scheme = "paper",
+  eyebrow,
+  eyebrow_variant = "default",
+  title,
+  lead,
+  cards,
+  more_label,
+  more_url,
+} = Astro.props;
+
+const eyebrowClass = [
+  "eyebrow",
+  eyebrow_variant === "forest" ? "eyebrow--forest" : "",
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<section class:list={["section", { "scheme-sand": scheme === "sand" }]}>
+  <div class="wrap">
+    <div class="section-head reveal">
+      {eyebrow && <p class={eyebrowClass}>{eyebrow}</p>}
+      <h2 class="h2">{title}</h2>
+      {lead && <p class="lead">{lead}</p>}
+    </div>
+    <div class="proj-grid reveal" style="margin-top:44px;">
+      {
+        cards.map((c) => (
+          <a href={c.url} class="proj-card" data-cat={c.filter_cat}>
+            <img src={c.image} alt={c.image_alt ?? c.title} />
+            <div class="proj-card__body">
+              {c.idx && <div class="proj-card__idx serif-num">{c.idx}</div>}
+              <div class="proj-card__title">{c.title}</div>
+              <p class="proj-card__desc">{c.desc}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+    {
+      more_label && more_url && (
+        <div style="margin-top:36px;" class="reveal">
+          <a
+            href={more_url}
+            class="btn btn--ghost"
+            style="border-color:var(--ink);"
+          >
+            {more_label} <span class="arrow">→</span>
+          </a>
+        </div>
+      )
+    }
+  </div>
+</section>

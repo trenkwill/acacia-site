@@ -1,29 +1,79 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import ProjectCard from "../components/ProjectCard.astro";
+import { getEntry, getCollection } from "astro:content";
+import PageHero from "../components/sections/PageHero.astro";
+import CtaBand from "../components/sections/CtaBand.astro";
 
-const projects = (await getCollection("projects", ({ data }) => !data.draft))
+const page = await getEntry("pages", "projets");
+if (!page) throw new Error("Missing pages/projets.md");
+const d = page.data;
+
+const allProjects = (await getCollection("projects", ({ data }) => !data.draft))
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout
-  title="Projets Industriels"
-  description="Galerie de projets industriels et architecturaux réalisés en Acacia Robinia."
+  title={d.title}
+  description={d.seo_description}
+  screenLabel={d.screen_label}
 >
-  <h1 class="page-title">Projets Industriels en Acacia</h1>
+  {d.page_hero && <PageHero {...d.page_hero} />}
 
-  <div class="content-section narrow-container">
-    <div class="product-grid">
-      {
-        projects.map((entry) => (
-          <ProjectCard
-            title={entry.data.title}
-            image={entry.data.image}
-            description={entry.data.description}
-          />
-        ))
-      }
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        {
+          d.intro_split?.eyebrow && (
+            <p
+              class:list={[
+                "eyebrow",
+                { "eyebrow--forest": d.intro_split.eyebrow_variant === "forest" },
+              ]}
+            >
+              {d.intro_split.eyebrow}
+            </p>
+          )
+        }
+        {d.intro_split?.title && (
+          <h2 class="h2" set:html={d.intro_split.title} />
+        )}
+        {d.intro_split?.lead && <p class="lead">{d.intro_split.lead}</p>}
+      </div>
+      <div class="proj-filter reveal">
+        <button class="proj-filter__btn is-active" data-filter="all">Tous</button>
+        <button class="proj-filter__btn" data-filter="archi">
+          Architecture
+        </button>
+        <button class="proj-filter__btn" data-filter="terrasse">
+          Terrasse &amp; Extérieur
+        </button>
+        <button class="proj-filter__btn" data-filter="cloture">
+          Clôtures &amp; Garde-corps
+        </button>
+        <button class="proj-filter__btn" data-filter="jardin">
+          Jardin &amp; Mobilier
+        </button>
+      </div>
+
+      <div class="proj-grid">
+        {
+          allProjects.map((entry) => {
+            const p = entry.data;
+            return (
+              <a href="#" class="proj-card" data-cat={p.filter_cat}>
+                <img src={p.image} alt={p.image_alt ?? p.title} />
+                <div class="proj-card__body">
+                  <div class="proj-card__idx serif-num">{p.idx}</div>
+                  <div class="proj-card__title">{p.title}</div>
+                  <p class="proj-card__desc">{p.desc}</p>
+                </div>
+              </a>
+            );
+          })
+        }
+      </div>
     </div>
-  </div>
+  </section>
+
+  {d.cta_band && <CtaBand {...d.cta_band} />}
 </BaseLayout>

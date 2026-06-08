@@ -1,8 +1,11 @@
 ---
-title: "Merrains en acacia"
+title: Merrains en acacia
 image: /images/image28.png
-category: amenagement
-order: 20
+image_alt: Merrains en acacia
+family: amenagement
+cat_label: Tonnellerie
+order: 7
+rows:
+  - dt: Origine
+    dd: Hongrie
 ---
-
-Origine : Hongrie
