@@ -174,7 +174,13 @@ button { font-family: inherit; }
   gap: 24px;
   height: 78px;
 }
-.brand { display: flex; align-items: flex-end; gap: 12px; line-height: 1; }
+.brand { display: flex; align-items: center; gap: 14px; line-height: 1; }
+.brand__logo {
+  height: 44px;
+  width: auto;
+  display: block;
+  flex: none;
+}
 .brand__mark {
   position: relative;
   padding-top: 9px;
@@ -185,6 +191,10 @@ button { font-family: inherit; }
   top: 0; left: 0;
   width: 34px; height: 3px;
   background: var(--gold);
+}
+@media (max-width: 860px) {
+  .brand__logo { height: 36px; }
+  .brand { gap: 10px; }
 }
 .brand__name {
   font-size: 19px;
