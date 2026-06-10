@@ -171,6 +171,7 @@ const pages = defineCollection({
         baseline: z.string().optional(),
         image: z.string(),
         image_alt: z.string().optional(),
+        logo: z.string().optional(),
         cta1: cta,
         cta2: cta,
         scroll_label: z.string().default("Défiler"),
@@ -272,6 +273,35 @@ const pages = defineCollection({
         ),
         more_label: z.string().optional(),
         more_url: z.string().optional(),
+      })
+      .optional(),
+
+    /* Documents section (association) — statuts & adhesion */
+    documents_section: z
+      .object({
+        scheme: z.enum(["paper", "sand"]).default("paper"),
+        eyebrow: z.string().optional(),
+        eyebrow_variant: z.enum(["default", "forest"]).optional(),
+        title: z.string(),
+        statuts: z
+          .object({
+            label: z.string(),
+            url: z.string(),
+            note: z.string().optional(),
+          })
+          .optional(),
+        adhesion: z
+          .object({
+            title: z.string(),
+            colleges: z.array(
+              z.object({
+                label: z.string(),
+                url: z.string(),
+                note: z.string().optional(),
+              })
+            ),
+          })
+          .optional(),
       })
       .optional(),
 

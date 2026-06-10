@@ -23,7 +23,10 @@ const year = 2026;
     <div class="footer-col">
       <div class="footer-col__title">Contact</div>
       <p>
-        {settings.contact_main.label}<br />{settings.contact_main.person}
+        {settings.contact_address.line1}<br />
+        {settings.contact_address.line2}<br />
+        {settings.contact_address.zip_city}<br />
+        {settings.contact_address.country}
       </p>
       <a href={settings.contact_main.phone_link}>{settings.contact_main.phone}</a>
       <a href={`mailto:${settings.footer_email}`}>{settings.footer_email}</a>

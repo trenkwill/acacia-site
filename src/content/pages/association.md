@@ -41,6 +41,27 @@ values_section:
     - idx: "03"
       title: Innovation
       body: Développer de nouveaux produits techniques — aboutage, lamellé-collé, étuvage.
+documents_section:
+  scheme: paper
+  eyebrow: Documents
+  eyebrow_variant: forest
+  title: Statuts & Adhésion
+  statuts:
+    label: "Consulter les statuts de l'association"
+    url: "#"
+    note: "(document à venir)"
+  adhesion:
+    title: "Formulaires d'adhésion par collège"
+    colleges:
+      - label: "Collège 1 — Exploitants forestiers"
+        url: "#"
+        note: "(formulaire à venir)"
+      - label: "Collège 2 — Scieurs et transformateurs"
+        url: "#"
+        note: "(formulaire à venir)"
+      - label: "Collège 3 — Professionnels et prescripteurs"
+        url: "#"
+        note: "(formulaire à venir)"
 cta_band:
   eyebrow: Rejoindre la filière
   title: "Exploitant, scieur ou professionnel\_?"

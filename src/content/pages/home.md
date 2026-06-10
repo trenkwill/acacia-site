@@ -3,11 +3,12 @@ title: Accueil
 seo_description: "Filière Robinia Acacia France — Une ressource d'avenir : disponibilité, qualités, usages du bois d'acacia robinier."
 screen_label: Accueil
 hero:
-  eyebrow: Robinier faux-acacia · Golden Timber
+  eyebrow: Robinia pseudoacacia · Golden Timber
   title: Filière Robinia Acacia France
-  baseline: Une ressource d'avenir — disponibilité, qualités, usages.
+  baseline: "<em>Robinia pseudoacacia</em> — Une ressource d'avenir : disponibilité, qualités, usages."
   image: /images/robinia-bg.jpg
   image_alt: Robinier faux-acacia au soleil, feuillage doré
+  logo: /images/logo_acacia.jpg
   cta1:
     label: En savoir plus
     url: /association
@@ -30,12 +31,12 @@ intro_split:
   eyebrow: La ressource
   eyebrow_variant: forest
   title: Un bois noble,<br />local et durable
-  lead: Surnommé le « Teck français », le Robinier faux-acacia possède une durabilité naturelle de classe 4 — comparable aux meilleurs bois tropicaux, sans aucun traitement chimique.
+  lead: Le Robinier faux-acacia (<em>Robinia pseudoacacia</em>) possède une durabilité naturelle de classe 4 — comparable aux meilleurs bois tropicaux, sans aucun traitement chimique. Parfois surnommé « Teck français ».
   body: Notre association rassemble les acteurs de la filière, de la forêt à la transformation, pour structurer une production française encore mal connue et révéler tout le potentiel de cette essence d'avenir.
   image: /images/image7.jpg
   image_alt: Grumes d'acacia sciées, cernes du bois apparents
-  image_tag_num: Teck
-  image_tag_rest: " français"
+  image_tag_num: Robinia
+  image_tag_rest: " pseudoacacia"
   image_tall: true
   image_position: left
   narrow_text: true

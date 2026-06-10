@@ -15,18 +15,22 @@
     { "label": "Contact", "url": "/contact" }
   ],
   "footer_blurb": "Filière Robinia Acacia France — une ressource d'avenir : disponibilité, qualités, usages. Créée en 2024, l'association rassemble les acteurs de la filière, de la forêt à la transformation.",
-  "footer_email": "contact@acacia-france.com",
+  "footer_email": "contact@acaciafrancais.fr",
   "footer_credits": "Crédits / mentions légales",
   "contact_main": {
     "label": "Filière de l'Acacia Français",
-    "person": "C. Toulemonde",
     "phone": "06 80 13 15 98",
     "phone_link": "tel:+33680131598",
-    "email": "acacia+francais@dx10.eu"
+    "email": "contact@acaciafrancais.fr"
+  },
+  "contact_address": {
+    "line1": "Filière de l'acacia Français",
+    "line2": "Pl Aimé et Jean Claude Chanet",
+    "zip_city": "10270 Courteranges",
+    "country": "France"
   },
   "contact_technical": {
     "label": "Contact technique FCBA",
-    "person": "Jean-Denis Lanvin",
     "email": "Jean-Denis.LANVIN@fcba.fr",
     "note": "Pour toute question technique sur le bois d'acacia."
   },

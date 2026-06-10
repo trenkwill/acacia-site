@@ -3,8 +3,8 @@ title: L'Acacia
 seo_description: "L'Acacia — Robinia Pseudo-Acacia : caractéristiques techniques, propriétés et usages du bois."
 screen_label: L'Acacia
 page_hero:
-  title: L'Acacia<br />Robinia Pseudo-Acacia
-  lead: Le « Teck français » — un bois nerveux, dense et doré, aussi exigeant que remarquable.
+  title: "L'Acacia<br /><em>Robinia pseudoacacia</em>"
+  lead: "Un bois nerveux, dense et doré, aussi exigeant que remarquable. Parfois surnommé « Teck français »."
   breadcrumb_label: L'Acacia
   image: /images/image7.jpg
   image_alt: Grumes d'acacia sciées, cernes du bois
@@ -14,13 +14,13 @@ blocks:
     body: |-
       ## Le Bois
 
-      Le bois est nerveux. S'il est bien scié, **80 % de la nervosité est éliminée**. C'est un bois difficile à travailler : un bon scieur de chêne ne fait pas forcément un bon scieur d'acacia.
+      Le [Robinier faux-acacia](https://fr.wikipedia.org/wiki/Robinia_pseudoacacia) (*Robinia pseudoacacia*) est un bois nerveux. S'il est bien scié, **80 % de la nervosité est éliminée**. C'est un bois difficile à travailler : un bon scieur de chêne ne fait pas forcément un bon scieur d'acacia.
 
       ## Couleur
 
       L'acacia non exposé au soleil a une teinte qui varie du jaune au vert. Au soleil, il vire au doré — d'où son surnom de **Golden Timber**. Rien à voir avec de la moisissure : c'est sa patine naturelle.
     image: /images/image24.jpg
-    image_alt: Acacia étuvé, teinte dorée à brune
+    image_alt: Acacia étuvé / thermo-traité, teinte dorée à brune
     image_tag_num: Golden
     image_tag_rest: " Timber"
     image_tall: true
@@ -56,15 +56,15 @@ blocks:
   - type: split
     scheme: sand
     body: |-
-      ## Acacia Étuvé
+      ## Acacia Étuvé / Thermo-traité
 
-      Encore mal connu, l'étuvage rend le bois **plus léger et plus stable**, avec une couleur brun chocolat de toute beauté. Il peut s'utiliser en extérieur, en version brossée ou huilée.
+      Encore mal connu, l'étuvage (thermo-traitement) rend le bois **plus léger et plus stable**, avec une couleur brun chocolat de toute beauté. Il peut s'utiliser en extérieur, en version brossée ou huilée.
 
       Disponible en pièces massives ou en placage épais de 4 mm — idéal pour le parquet et le lambris d'intérieur premium.
     image: /images/image25.jpg
-    image_alt: Acacia étuvé brun chocolat
-    image_tag_num: Premium
-    image_tag_rest: " · Étuvé"
+    image_alt: Acacia étuvé / thermo-traité brun chocolat
+    image_tag_num: Étuvé
+    image_tag_rest: " · Thermo-traité"
     image_position: left
     cta1:
       label: Produits d'intérieur

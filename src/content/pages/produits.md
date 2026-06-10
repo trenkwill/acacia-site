@@ -4,7 +4,7 @@ seo_description: "Découvrez tous les produits en acacia : poteaux, piquets, lam
 screen_label: Nos Produits
 page_hero:
   title: Nos Produits en Acacia
-  lead: 21 références — du poteau écorcé brut à la lame de terrasse aboutée et au parquet étuvé.
+  lead: "21 références — du poteau écorcé brut à la lame de terrasse aboutée et au parquet étuvé. De la pépinière au rayon de la GSB (grande surface de bricolage)."
   breadcrumb_label: Nos Produits
   image: /images/image10.jpg
   image_alt: Piquets en acacia conditionnés

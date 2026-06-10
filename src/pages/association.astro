@@ -21,5 +21,54 @@ const d = page.data;
   {d.intro_split && <IntroSplit {...d.intro_split} />}
   {d.mission_section && <MissionSection {...d.mission_section} />}
   {d.values_section && <ValuesSection {...d.values_section} />}
+
+  {d.documents_section && (
+    <section class:list={["section", { "scheme-sand": d.documents_section.scheme === "sand" }]}>
+      <div class="wrap">
+        <div class="section-head reveal">
+          {d.documents_section.eyebrow && (
+            <p class:list={["eyebrow", d.documents_section.eyebrow_variant === "forest" ? "eyebrow--forest" : ""]}>
+              {d.documents_section.eyebrow}
+            </p>
+          )}
+          <h2 class="h2">{d.documents_section.title}</h2>
+        </div>
+        <div class="reveal" style="margin-top:40px; max-width:680px;">
+          {d.documents_section.statuts && (
+            <p style="margin-bottom:24px;">
+              <a href={d.documents_section.statuts.url} class="btn btn--ghost" style="border-color:var(--ink);">
+                {d.documents_section.statuts.label} <span class="arrow">&rarr;</span>
+              </a>
+              {d.documents_section.statuts.note && (
+                <span style="display:inline-block; margin-left:12px; font-size:0.85em; color:var(--muted);">
+                  {d.documents_section.statuts.note}
+                </span>
+              )}
+            </p>
+          )}
+          {d.documents_section.adhesion && (
+            <div style="margin-top:32px;">
+              <h3 class="h3" style="margin-bottom:20px;">{d.documents_section.adhesion.title}</h3>
+              <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:14px;">
+                {d.documents_section.adhesion.colleges.map((c: { label: string; url: string; note?: string }) => (
+                  <li>
+                    <a href={c.url} class="btn btn--ghost" style="border-color:var(--line); text-align:left;">
+                      {c.label} <span class="arrow">&rarr;</span>
+                    </a>
+                    {c.note && (
+                      <span style="display:inline-block; margin-left:12px; font-size:0.85em; color:var(--muted);">
+                        {c.note}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
   {d.cta_band && <CtaBand {...d.cta_band} />}
 </BaseLayout>

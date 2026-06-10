@@ -86,7 +86,13 @@ const d = page.data;
           <div class="info-card">
             <div class="info-card__head">{settings.contact_main.label}</div>
             <div class="info-card__row">
-              <span>Contact principal</span>{settings.contact_main.person}
+              <span>Adresse</span>
+              <address style="font-style:normal;">
+                {settings.contact_address.line1}<br />
+                {settings.contact_address.line2}<br />
+                {settings.contact_address.zip_city}<br />
+                {settings.contact_address.country}
+              </address>
             </div>
             <div class="info-card__row">
               <span>Téléphone</span>
@@ -105,9 +111,6 @@ const d = page.data;
           <div class="info-card">
             <div class="info-card__head">
               {settings.contact_technical.label}
-            </div>
-            <div class="info-card__row">
-              <span>Référent</span>{settings.contact_technical.person}
             </div>
             <div class="info-card__row">
               <span>Email</span>
