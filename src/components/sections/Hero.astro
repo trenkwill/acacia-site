@@ -34,24 +34,32 @@ const {
     <img src={image} alt={image_alt ?? ""} />
   </div>
   <div class="wrap hero__inner">
-    {logo && <img src={logo} alt="" class="hero__logo" style="height:90px; width:auto; margin-bottom:24px; display:block;" />}
-    {eyebrow && <p class="eyebrow eyebrow--light">{eyebrow}</p>}
-    <h1 class="hero__title h-display" set:html={title} />
-    <div class="hero__rule"></div>
-    {baseline && <p class="hero__baseline" set:html={baseline} />}
+    <div class="hero__content">
+      {eyebrow && <p class="eyebrow eyebrow--light">{eyebrow}</p>}
+      <h1 class="hero__title h-display" set:html={title} />
+      <div class="hero__rule"></div>
+      {baseline && <p class="hero__baseline" set:html={baseline} />}
+      {
+        (cta1 || cta2) && (
+          <div class="hero__cta">
+            {cta1 && (
+              <a href={cta1.url} class="btn btn--light">
+                {cta1.label} <span class="arrow">→</span>
+              </a>
+            )}
+            {cta2 && (
+              <a href={cta2.url} class="btn btn--ghost-light">
+                {cta2.label}
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
     {
-      (cta1 || cta2) && (
-        <div class="hero__cta">
-          {cta1 && (
-            <a href={cta1.url} class="btn btn--light">
-              {cta1.label} <span class="arrow">→</span>
-            </a>
-          )}
-          {cta2 && (
-            <a href={cta2.url} class="btn btn--ghost-light">
-              {cta2.label}
-            </a>
-          )}
+      logo && (
+        <div class="hero__logo-frame">
+          <img src={logo} alt={image_alt ? `Logo ${title}` : "Logo"} class="hero__logo" />
         </div>
       )
     }
