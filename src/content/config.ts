@@ -296,6 +296,7 @@ const pages = defineCollection({
             colleges: z.array(
               z.object({
                 label: z.string(),
+                logo: z.string().optional(),
                 url: z.string(),
                 note: z.string().optional(),
               })

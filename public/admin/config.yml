@@ -14,7 +14,7 @@ public_folder: "/images/uploads"
 
 site_url: https://acaciafrance.netlify.app
 display_url: https://acaciafrance.netlify.app
-logo_url: /images/logo_acacia.jpg
+logo_url: /images/logo-filiere-acacia.png
 
 # Widgets réutilisables (Decap/Sveltia : !include n'existe pas → on duplique)
 collections:

@@ -33,7 +33,7 @@ const d = page.data;
           )}
           <h2 class="h2">{d.documents_section.title}</h2>
         </div>
-        <div class="reveal" style="margin-top:40px; max-width:680px;">
+        <div class="reveal" style="margin-top:40px; max-width:1000px;">
           {d.documents_section.statuts && (
             <p style="margin-bottom:24px;">
               <a href={d.documents_section.statuts.url} class="btn btn--ghost" style="border-color:var(--ink);">
@@ -49,14 +49,20 @@ const d = page.data;
           {d.documents_section.adhesion && (
             <div style="margin-top:32px;">
               <h3 class="h3" style="margin-bottom:20px;">{d.documents_section.adhesion.title}</h3>
-              <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:14px;">
-                {d.documents_section.adhesion.colleges.map((c: { label: string; url: string; note?: string }) => (
-                  <li>
+              <ul class="colleges-grid">
+                {d.documents_section.adhesion.colleges.map((c: { label: string; logo?: string; url: string; note?: string }) => (
+                  <li class="college-card">
+                    {c.logo && (
+                      <div class="college-card__logo">
+                        <img src={c.logo} alt={`Logo ${c.label}`} loading="lazy" />
+                      </div>
+                    )}
+                    <p class="college-card__label">{c.label}</p>
                     <a href={c.url} class="btn btn--ghost" style="border-color:var(--line); text-align:left;">
-                      {c.label} <span class="arrow">&rarr;</span>
+                      Formulaire d'adhésion <span class="arrow">&rarr;</span>
                     </a>
                     {c.note && (
-                      <span style="display:inline-block; margin-left:12px; font-size:0.85em; color:var(--muted);">
+                      <span style="display:block; margin-top:8px; font-size:0.85em; color:var(--muted);">
                         {c.note}
                       </span>
                     )}

@@ -54,12 +54,15 @@ documents_section:
     title: "Formulaires d'adhésion par collège"
     colleges:
       - label: "Collège 1 — Exploitants forestiers"
+        logo: /images/logo-college-amont.png
         url: "#"
         note: "(formulaire à venir)"
       - label: "Collège 2 — Scieurs et transformateurs"
+        logo: /images/logo-college-aval.png
         url: "#"
         note: "(formulaire à venir)"
       - label: "Collège 3 — Professionnels et prescripteurs"
+        logo: /images/logo-college-institutionnels.png
         url: "#"
         note: "(formulaire à venir)"
 cta_band:

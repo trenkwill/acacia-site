@@ -8,7 +8,7 @@ hero:
   baseline: "<em>Robinia pseudoacacia</em> — Une ressource d'avenir : disponibilité, qualités, usages."
   image: /images/robinia-bg.jpg
   image_alt: Robinier faux-acacia au soleil, feuillage doré
-  logo: /images/logo_acacia.jpg
+  logo: /images/logo-filiere-acacia.png
   cta1:
     label: En savoir plus
     url: /association
