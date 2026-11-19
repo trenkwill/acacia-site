@@ -1,0 +1,105 @@
+---
+// Page « Site en construction ». Servie à toutes les adresses par la règle
+// « SITE EN CONSTRUCTION » de netlify.toml ; le reste du site reste dans le dépôt.
+import "../styles/site.css";
+import settings from "../data/settings.json";
+
+const title = `Site en construction — ${settings.site_title}`;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={`${settings.site_title} — site en construction.`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/png" href={settings.logo} />
+  </head>
+
+  <body>
+    <main class="soon" data-screen-label="En construction">
+      <div class="hero__bg">
+        <img src="/images/robinia-bg.jpg" alt="" />
+      </div>
+
+      <div class="wrap soon__inner">
+        <div class="hero__logo-frame soon__logo-frame">
+          <img src={settings.logo} alt={`Logo ${settings.site_title}`} class="hero__logo soon__logo" />
+        </div>
+
+        <p class="eyebrow eyebrow--light">Site en construction</p>
+        <h1 class="h-display soon__title">{settings.site_title}</h1>
+        <div class="hero__rule soon__rule"></div>
+        <p class="hero__baseline soon__baseline">
+          Notre site fait peau neuve. Il sera bientôt de retour.
+        </p>
+
+        <div class="hero__cta soon__cta">
+          <a href={`mailto:${settings.contact_main.email}`} class="btn btn--light">
+            {settings.contact_main.email}
+          </a>
+          <a href={settings.contact_main.phone_link} class="btn btn--ghost-light">
+            {settings.contact_main.phone}
+          </a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  .soon {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    color: var(--paper);
+    background: var(--forest-deep);
+    overflow: hidden;
+  }
+  .soon :global(.hero__bg::after) {
+    background:
+      linear-gradient(to top, rgba(15, 19, 15, 0.92) 0%, rgba(15, 19, 15, 0.55) 55%, rgba(15, 19, 15, 0.45) 100%);
+  }
+  .soon__inner {
+    position: relative;
+    width: 100%;
+    padding-block: clamp(48px, 10vh, 120px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-shadow: 0 1px 30px rgba(10, 14, 10, 0.35);
+  }
+  .soon__logo-frame {
+    align-self: center;
+    margin-bottom: clamp(28px, 5vh, 48px);
+  }
+  .soon__logo {
+    width: clamp(120px, 16vw, 200px);
+  }
+  .soon__title {
+    max-width: 18ch;
+    margin-top: 18px;
+  }
+  .soon__rule {
+    margin-inline: auto;
+  }
+  .soon__baseline {
+    margin-inline: auto;
+  }
+  .soon__cta {
+    justify-content: center;
+  }
+  @media (max-width: 480px) {
+    .soon__cta .btn {
+      width: 100%;
+      padding-inline: 16px;
+      letter-spacing: 0.08em;
+    }
+  }
+</style>
