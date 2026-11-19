@@ -87,3 +87,32 @@
   for = "/admin/*"
   [headers.values]
     X-Frame-Options = "SAMEORIGIN"
+
+# ============================================================
+# SITE EN CONSTRUCTION (19/11/2026)
+# Toutes les adresses servent /construction/, sauf le CMS et les fichiers
+# dont la page a besoin. Supprimer ce bloc pour remettre le site en ligne.
+# ============================================================
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/_astro/*"
+  to = "/_astro/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/images/*"
+  to = "/images/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/construction/"
+  status = 200
+  force = true
